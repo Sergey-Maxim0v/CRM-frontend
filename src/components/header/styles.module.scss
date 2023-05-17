@@ -1,3 +1,21 @@
-.header{
+.header {
+  padding: 20px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: $c-white;
+  box-shadow: 0 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
+}
 
+.logo {
+  margin-right: 52px;
+  width: 50px;
+  height: 50px;
+}
+
+.input {
+  height: 50px;
+  width: 100%;
+  max-width: 580px;
 }

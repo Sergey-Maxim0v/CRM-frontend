@@ -1,13 +1,15 @@
 import styles from './styles.module.scss'
-import {useContext} from "react";
-import {Context} from "../../context/context";
+import HeaderLogo from "../header-logo";
+import HeaderInput from "../header-input";
 
 const Header = () => {
-    const {filter, setFilter} = useContext(Context)
-
     return (
         <header className={styles.header}>
-            header
+            <a href="/" className={styles.logo}>
+                <HeaderLogo/>
+            </a>
+
+            <HeaderInput className={styles.input}/>
         </header>
     )
 }

@@ -1,17 +1,14 @@
-import {useEffect, useState} from "react";
+import {Dispatch, SetStateAction, useEffect} from "react";
 import getContacts from "../api/getContacts";
 import FETCH_STATUS from "../enums/fetch-status";
 import {IContact} from "../api/types";
 
 export interface IUseGetContacts {
-    status: FETCH_STATUS
-    data?: IContact[]
+    setStatus: Dispatch<SetStateAction<FETCH_STATUS>>
+    setData: Dispatch<SetStateAction<IContact[]>>
 }
 
-const useGetContacts = (): IUseGetContacts => {
-    const [status, setStatus] = useState<FETCH_STATUS>(FETCH_STATUS.load)
-    const [data, setData] = useState<IContact[]>()
-
+const useGetContacts = ({setStatus, setData}: IUseGetContacts) => {
     useEffect(() => {
         getContacts().then(response => {
             if (response.data) {
@@ -26,8 +23,6 @@ const useGetContacts = (): IUseGetContacts => {
             console.error('ERROR GET CONTACTS:::', error)
         })
     }, [])
-
-    return {status, data}
 }
 
 export default useGetContacts
