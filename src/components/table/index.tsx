@@ -12,8 +12,6 @@ const Table = () => {
 
     useGetContacts({setStatus, setData})
 
-    console.log('table data', status, data)
-
     return (
         <>
             table

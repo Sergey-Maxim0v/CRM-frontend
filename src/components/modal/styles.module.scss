@@ -1,0 +1,68 @@
+.modalOverlay {
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $c-black;
+  opacity: 0.6;
+  animation: animation-overlay 0.2s;
+
+  &.close {
+    animation: animation-close 0.25s;
+  }
+}
+
+.modal {
+  z-index: 250;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  max-width: 100vw;
+  height: auto;
+  padding: 24px 30px;
+  background-color: $c-white;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.15);
+  animation: animation-modal 0.4s;
+  transition: opacity 0.1s;
+
+  &.close {
+    opacity: 0;
+  }
+}
+
+
+@keyframes animation-overlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes animation-modal {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animation-close {
+  0% {
+
+  }
+
+  100% {
+    border-radius: 50%;
+    transform: scale(0);
+  }
+}

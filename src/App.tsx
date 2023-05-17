@@ -19,7 +19,7 @@ function App() {
 
             <Content/>
 
-            {modalType ?? <Modal modalType={modalType}/>}
+            {modalType && <Modal/>}
         </Context.Provider>
     )
 }
