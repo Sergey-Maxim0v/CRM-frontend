@@ -9,6 +9,7 @@ const HeaderInput: FC<IHeaderInput> = ({className}) => {
 
     const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         setFilter(event.target.value)
+        // eslint-disable-next-line
     }, [])
 
     return (

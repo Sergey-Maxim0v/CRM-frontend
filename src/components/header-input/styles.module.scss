@@ -3,6 +3,13 @@
   height: 100%;
   border: 1px $c-gray-light solid;
   padding: 16px 12px;
+
+  font-weight: 600;
+  color: $c-black;
+
+  &::placeholder {
+    color: $c-gray-placeholder;
+  }
 }
 
 .label {
