@@ -6,7 +6,7 @@ const Table = () => {
     const {filter} = useContext(Context)
     const {status, data} = useGetContacts()
 
-    console.log(status, data)
+    console.log('table data',status, data)
 
     return (
         <>
