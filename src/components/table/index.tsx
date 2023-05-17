@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {Context} from "../../context/context";
-import useGetContacts from "../../assets/hooks/useGetContacts";
+import useGetContacts from "../../hooks/useGetContacts";
 
 const Table = () => {
     const {filter} = useContext(Context)

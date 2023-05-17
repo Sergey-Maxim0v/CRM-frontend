@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-import getContacts from "../../api/getContacts";
-import FETCH_STATUS from "../../enums/fetch-status";
-import {IContact} from "../../api/types";
+import getContacts from "../api/getContacts";
+import FETCH_STATUS from "../enums/fetch-status";
+import {IContact} from "../api/types";
 
 export interface IUseGetContacts {
     status: FETCH_STATUS
