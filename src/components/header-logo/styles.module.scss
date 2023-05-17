@@ -10,4 +10,9 @@
   font-size: 18px;
   line-height: 25px;
   color: $c-white;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $c-violet-dark;
+  }
 }
