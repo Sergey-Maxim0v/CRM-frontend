@@ -3,6 +3,7 @@ import Table from "../table";
 import ButtonAdd from "../button-add";
 
 const Content = () => {
+
     return (
         <>
             <PageTitle/>
