@@ -5,6 +5,7 @@ import classNames from "classnames";
 import {IContact} from "../../api/types";
 import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
+import SelectContact from "../select-contact";
 
 const initialContact: IContact = {
     type: '',
@@ -25,7 +26,7 @@ const ModalContacts: FC<IModalContacts> = ({clientData, setClientData, className
     return (
         <div className={classNames(styles.row, className)}>
             {clientData.contacts?.map((contact, index) =>
-                <div key={index}>// TODO: select contact {contact.type}</div>
+                <SelectContact key={index} contact={contact} setClientData={setClientData}/>
             )}
 
             <button
