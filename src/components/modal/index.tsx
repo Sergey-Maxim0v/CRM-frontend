@@ -1,28 +1,25 @@
-import {useCallback, useContext, useState} from "react";
-import {Context} from "../../context/context";
+import {FC, useCallback, useState} from "react";
 import styles from './styles.module.scss'
 import classNames from "classnames";
 import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
 
-const Modal = () => {
-    const {modalType, setModalType} = useContext(Context)
+const Modal: FC = ({children, closeModal}) => {
     const [isClose, setIsClose] = useState(false)
 
-    const closeModal = useCallback(() => {
+    const onClose = useCallback(() => {
         setIsClose(true)
 
         setTimeout(() => {
-            setModalType(false);
+            closeModal();
         }, 200)
-        // eslint-disable-next-line
-    }, [])
+    }, [closeModal])
 
     return (
         <>
             <div
                 className={classNames(styles.modalOverlay, {[styles.close]: isClose})}
-                onClick={() => closeModal()}
+                onClick={() => onClose()}
             >
             </div>
 
@@ -30,12 +27,13 @@ const Modal = () => {
                 className={classNames(styles.modal, {[styles.close]: isClose})}
             >
                 <button
-                    onClick={() => closeModal()}
+                    onClick={() => onClose()}
                     className={styles.modalCloseBtn}
                 >
                     <ComponentsSVG type={SVG_TYPES.close} className={styles.icon}/>
                 </button>
-                {modalType}
+
+                {children}
             </div>
         </>
     )

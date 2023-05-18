@@ -14,7 +14,7 @@ const Table = () => {
 
     return (
         <>
-            table
+            // TODO: table
         </>
     )
 }

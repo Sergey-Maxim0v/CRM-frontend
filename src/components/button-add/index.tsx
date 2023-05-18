@@ -1,17 +1,14 @@
-import {useContext} from "react";
-import {Context} from "../../context/context";
-import MODAL_TYPES from "../../enums/modal-types";
 import styles from './styles.module.scss'
 import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
+import {FC} from "react";
+import {IButtonAdd} from "./types";
 
-const ButtonAdd = () => {
-    const {setModalType} = useContext(Context)
-
+const ButtonAdd: FC<IButtonAdd> = ({openModal}) => {
     return (
         <div className={styles.row}>
             <button
-                onClick={() => setModalType(MODAL_TYPES.addContact)}
+                onClick={() => openModal()}
                 className={styles.button}
             >
                 <ComponentsSVG type={SVG_TYPES.add} className={styles.icon}/>
