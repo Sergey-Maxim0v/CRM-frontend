@@ -1,11 +1,11 @@
 import {Dispatch, SetStateAction, useEffect} from "react";
 import getContacts from "../api/getContacts";
 import FETCH_STATUS from "../enums/fetch-status";
-import {IContact} from "../api/types";
+import {IClient} from "../api/types";
 
 export interface IUseGetContacts {
     setStatus: Dispatch<SetStateAction<FETCH_STATUS>>
-    setData: Dispatch<SetStateAction<IContact[]>>
+    setData: Dispatch<SetStateAction<IClient[]>>
 }
 
 const useGetContacts = ({setStatus, setData}: IUseGetContacts) => {

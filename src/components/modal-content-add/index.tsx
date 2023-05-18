@@ -1,9 +1,10 @@
 import {FC, useCallback, useState} from "react";
 import styles from './styles.module.scss'
 import InputModal from "../input-modal";
-import {INewContact} from "../../api/types";
+import {INewClient} from "../../api/types";
+import ModalContacts from "../modal-contacts";
 
-const initialContactData: INewContact = {
+const initialContactData: INewClient = {
     name: '',
     surname: '',
     lastName: '',
@@ -11,22 +12,22 @@ const initialContactData: INewContact = {
 }
 
 const ModalContentAdd: FC = () => {
-    const [contactData, setContactData] = useState(initialContactData)
+    const [clientData, setClientData] = useState<INewClient>(initialContactData)
 
-    const onChangeSurname = useCallback((e) => setContactData({
-            ...contactData, surname: e.target.value
+    const onChangeSurname = useCallback((e) => setClientData({
+            ...clientData, surname: e.target.value
         }),
-        [contactData])
+        [clientData])
 
-    const onChangeName = useCallback((e) => setContactData({
-            ...contactData, name: e.target.value
+    const onChangeName = useCallback((e) => setClientData({
+            ...clientData, name: e.target.value
         }),
-        [contactData])
+        [clientData])
 
-    const onChangeLastName = useCallback((e) => setContactData({
-            ...contactData, lastName: e.target.value
+    const onChangeLastName = useCallback((e) => setClientData({
+            ...clientData, lastName: e.target.value
         }),
-        [contactData])
+        [clientData])
 
     return (
         <form className={styles.row}>
@@ -35,7 +36,7 @@ const ModalContentAdd: FC = () => {
             </h3>
 
             <InputModal
-                value={contactData.surname}
+                value={clientData.surname}
                 onChange={onChangeSurname}
                 placeholder={'Фамилия'}
                 type="text"
@@ -44,7 +45,7 @@ const ModalContentAdd: FC = () => {
             />
 
             <InputModal
-                value={contactData.name}
+                value={clientData.name}
                 onChange={onChangeName}
                 placeholder={'Имя'}
                 type="text"
@@ -53,14 +54,14 @@ const ModalContentAdd: FC = () => {
             />
 
             <InputModal
-                value={contactData.lastName}
+                value={clientData.lastName}
                 onChange={onChangeLastName}
                 placeholder={'Отчество'}
                 type="text"
                 className={styles.input}
             />
 
-            <p className="">// TODO: contacts</p>
+            <ModalContacts clientData={clientData} setClientData={setClientData}/>
 
             <p className="">// TODO: buttons</p>
         </form>
