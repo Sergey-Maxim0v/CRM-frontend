@@ -1,0 +1,53 @@
+.label {
+  margin: 14px 0;
+  width: 100%;
+  height: 42px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  padding: 14px 0 4px;
+  border-bottom: 1px $c-gray-light solid;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: $c-black;
+
+  &:not(:placeholder-shown):invalid {
+    border-color: $c-red;
+  }
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:required ~ .placeholder:after {
+    content: '*';
+    color: $c-violet;
+  }
+
+  &:not(:placeholder-shown), &:focus {
+    & ~ .placeholder {
+      top: 0;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 14px;
+      transform: translateY(0);
+    }
+  }
+}
+
+.placeholder {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: $c-gray-placeholder;
+  transition: transform 0.2s, font-size 0.2s, top 0.2s, font-weight 0.2s, line-height 0.2s;
+}
