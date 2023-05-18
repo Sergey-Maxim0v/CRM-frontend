@@ -1,15 +1,13 @@
 import {FC, useCallback, useState} from "react";
 import styles from './styles.module.scss'
 import InputModal from "../input-modal";
+import {INewContact} from "../../api/types";
 
-const initialContactData = {
-    id: undefined,
-    createdAt: undefined,
-    updatedAt: undefined,
+const initialContactData: INewContact = {
     name: '',
     surname: '',
     lastName: '',
-    contacts: undefined
+    contacts: []
 }
 
 const ModalContentAdd: FC = () => {
