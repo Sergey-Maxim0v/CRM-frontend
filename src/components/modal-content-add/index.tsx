@@ -1,17 +1,66 @@
-import {FC, useState} from "react";
+import {FC, useCallback, useState} from "react";
 import styles from './styles.module.scss'
 import InputModal from "../input-modal";
 
+const initialContactData = {
+    id: undefined,
+    createdAt: undefined,
+    updatedAt: undefined,
+    name: '',
+    surname: '',
+    lastName: '',
+    contacts: undefined
+}
+
 const ModalContentAdd: FC = () => {
-    const [contactData, setContactData] = useState()
+    const [contactData, setContactData] = useState(initialContactData)
+
+    const onChangeSurname = useCallback((e) => setContactData({
+            ...contactData, surname: e.target.value
+        }),
+        [contactData])
+
+    const onChangeName = useCallback((e) => setContactData({
+            ...contactData, name: e.target.value
+        }),
+        [contactData])
+
+    const onChangeLastName = useCallback((e) => setContactData({
+            ...contactData, lastName: e.target.value
+        }),
+        [contactData])
 
     return (
         <form className={styles.row}>
-                <h3 className={styles.modalTitle}>
-                    Новый клиент
-                </h3>
+            <h3 className={styles.modalTitle}>
+                Новый клиент
+            </h3>
 
-            <InputModal placeholder={'Фамилия'} type="text" required className={styles.input}/>
+            <InputModal
+                value={contactData.surname}
+                onChange={onChangeSurname}
+                placeholder={'Фамилия'}
+                type="text"
+                required
+                className={styles.input}
+            />
+
+            <InputModal
+                value={contactData.name}
+                onChange={onChangeName}
+                placeholder={'Имя'}
+                type="text"
+                required
+                className={styles.input}
+            />
+
+            <InputModal
+                value={contactData.lastName}
+                onChange={onChangeLastName}
+                placeholder={'Отчество'}
+                type="text"
+                className={styles.input}
+            />
 
             <p className="">// TODO: contacts</p>
 
