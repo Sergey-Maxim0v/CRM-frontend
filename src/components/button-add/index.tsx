@@ -11,7 +11,7 @@ const ButtonAdd: FC<IButtonAdd> = ({openModal}) => {
                 onClick={() => openModal()}
                 className={styles.button}
             >
-                <ComponentsSVG type={SVG_TYPES.add} className={styles.icon}/>
+                <ComponentsSVG type={SVG_TYPES.addClient} className={styles.icon}/>
 
                 <span>
                     Добавить клиента

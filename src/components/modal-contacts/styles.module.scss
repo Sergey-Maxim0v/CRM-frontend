@@ -3,4 +3,39 @@
   width: calc(100% + 60px);
   padding: 24px 30px;
   background-color: $c-gray-bg;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.button {
+  margin: 0 auto;
+  height: auto;
+  min-height: 24px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+
+  &:not(:first-child){
+    margin-top: 26px;
+  }
+
+  &:hover{
+    & .buttonText{
+      color: $c-violet;
+    }
+  }
+}
+
+.buttonIcon {
+  margin-right: 4px;
+  color: $c-violet;
+}
+
+.buttonText {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: $c-black;
+  transition: color 0.2s;
 }
