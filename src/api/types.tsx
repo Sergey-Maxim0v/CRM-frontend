@@ -25,8 +25,9 @@ export interface IServerErrorMessage {
 }
 
 export enum CONTACT_TYPES {
-  vk = "vk",
   tel = "tel",
+  otherTel = "otherTel",
+  vk = "vk",
   email = "email",
   telegram = "telegram",
 }
