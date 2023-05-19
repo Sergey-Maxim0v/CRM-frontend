@@ -22,7 +22,7 @@ const ModalContacts: FC<IModalContacts> = ({
     setClientData({
       ...clientData,
       contacts: clientData.contacts
-        ? clientData.contacts.concat(initialContact)
+        ? clientData.contacts.concat({ ...initialContact })
         : [initialContact],
     });
   };

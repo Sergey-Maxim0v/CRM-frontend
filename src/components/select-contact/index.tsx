@@ -50,8 +50,6 @@ const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
   };
 
   const onDelete = () => {
-    // TODO: удаление одного пустого контакта удаляет все пустые контакты
-
     setClientData((pref) => {
       const filteredContacts = pref.contacts.filter((el) => el !== contact);
 
