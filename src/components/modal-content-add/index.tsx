@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import { INewClient } from "../../api/types";
@@ -14,32 +14,23 @@ const initialContactData: INewClient = {
 const ModalContentAdd: FC = () => {
   const [clientData, setClientData] = useState<INewClient>(initialContactData);
 
-  const onChangeSurname = useCallback(
-    (e) =>
-      setClientData({
-        ...clientData,
-        surname: e.target.value,
-      }),
-    [clientData]
-  );
+  const onChangeSurname = (e) =>
+    setClientData({
+      ...clientData,
+      surname: e.target.value,
+    });
 
-  const onChangeName = useCallback(
-    (e) =>
-      setClientData({
-        ...clientData,
-        name: e.target.value,
-      }),
-    [clientData]
-  );
+  const onChangeName = (e) =>
+    setClientData({
+      ...clientData,
+      name: e.target.value,
+    });
 
-  const onChangeLastName = useCallback(
-    (e) =>
-      setClientData({
-        ...clientData,
-        lastName: e.target.value,
-      }),
-    [clientData]
-  );
+  const onChangeLastName = (e) =>
+    setClientData({
+      ...clientData,
+      lastName: e.target.value,
+    });
 
   return (
     <form className={styles.row}>

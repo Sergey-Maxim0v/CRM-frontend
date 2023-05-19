@@ -1,15 +1,15 @@
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import { ISelectContact } from "./types";
 import styles from "./styles.module.scss";
 
 const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
-  const onChangeType = useCallback(() => {
+  const onChangeType = () => {
     // TODO
-  }, [contact, setClientData]);
+  };
 
-  const onChangeValue = useCallback(() => {
+  const onChangeValue = () => {
     // TODO
-  }, [contact, setClientData]);
+  };
 
   return <div className={styles.row}>// TODO: SelectContact</div>;
 };

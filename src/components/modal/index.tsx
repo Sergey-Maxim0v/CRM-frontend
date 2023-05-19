@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useState } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import ComponentsSVG from "../components-svg";
@@ -7,13 +7,13 @@ import SVG_TYPES from "../../enums/svg-types";
 const Modal: FC = ({ children, closeModal }) => {
   const [isClose, setIsClose] = useState(false);
 
-  const onClose = useCallback(() => {
+  const onClose = () => {
     setIsClose(true);
 
     setTimeout(() => {
       closeModal();
     }, 200);
-  }, [closeModal]);
+  };
 
   return (
     <>
