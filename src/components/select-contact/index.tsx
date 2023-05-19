@@ -1,52 +1,42 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { ISelectContact } from "./types";
 import styles from "./styles.module.scss";
 import Select from "../select";
 import { CONTACT_TYPES, IContact } from "../../api/types";
 
 const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
-  const onChangeType = (type: CONTACT_TYPES) => {
-    setClientData((pref) => {
-      const contacts = pref.contacts;
-      const currentIndex = contacts.indexOf(contact);
-      const resultContacts = [];
+  const [newContactData, setNewContactData] = useState<IContact>(contact);
 
-      for (let i = 0; i < contacts.length; i++) {
-        if (i === currentIndex) {
-          const redactedContact: IContact = { ...contacts[i], type };
-          resultContacts.push(redactedContact);
-        } else {
-          resultContacts.push(contacts[i]);
+  useEffect(() => {
+    if (newContactData.type && newContactData.value) {
+      setClientData((pref) => {
+        const contacts = pref.contacts;
+        const currentIndex = contacts.indexOf(contact);
+        const resultContacts = [];
+
+        for (let i = 0; i < contacts.length; i++) {
+          if (i === currentIndex) {
+            resultContacts.push(newContactData);
+          } else {
+            resultContacts.push(contacts[i]);
+          }
         }
-      }
 
-      return {
-        ...pref,
-        contacts: resultContacts,
-      };
-    });
+        return {
+          ...pref,
+          contacts: resultContacts,
+        };
+      });
+    }
+    // eslint-disable-next-line
+  }, [newContactData]);
+
+  const onChangeType = (type: CONTACT_TYPES) => {
+    setNewContactData({ ...contact, type });
   };
 
   const onChangeValue = (value: string) => {
-    setClientData((pref) => {
-      const contacts = pref.contacts;
-      const currentIndex = contacts.indexOf(contact);
-      const resultContacts = [];
-
-      for (let i = 0; i < contacts.length; i++) {
-        if (i === currentIndex) {
-          const redactedContact: IContact = { ...contacts[i], value };
-          resultContacts.push(redactedContact);
-        } else {
-          resultContacts.push(contacts[i]);
-        }
-      }
-
-      return {
-        ...pref,
-        contacts: resultContacts,
-      };
-    });
+    setNewContactData({ ...contact, value });
   };
 
   const onDelete = () => {
