@@ -1,4 +1,9 @@
-export type IInputModal = Pick<
-  HTMLInputElement,
-  "className" | "type" | "placeholder" | "value" | "onChange" | "required"
->;
+import { ChangeEvent } from "react";
+
+export interface IInputModal
+  extends Pick<
+    HTMLInputElement,
+    "className" | "type" | "placeholder" | "value" | "required"
+  > {
+  onChange: (val: ChangeEvent<HTMLInputElement>) => void;
+}

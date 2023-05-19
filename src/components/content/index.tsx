@@ -12,7 +12,7 @@ const Content = () => {
   return (
     <section className={stiles.row}>
       <PageTitle />
-      <Table filter />
+      <Table />
       <ButtonAdd openModal={() => setIsOpenAddModal(true)} />
 
       {isOpenAddModal && (

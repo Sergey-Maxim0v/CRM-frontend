@@ -1,10 +1,11 @@
-import { FC, useState } from "react";
+import { FC, PropsWithChildren, useState } from "react";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
+import { IModal } from "./types";
 
-const Modal: FC = ({ children, closeModal }) => {
+const Modal: FC<PropsWithChildren<IModal>> = ({ children, closeModal }) => {
   const [isClose, setIsClose] = useState(false);
 
   const onClose = () => {

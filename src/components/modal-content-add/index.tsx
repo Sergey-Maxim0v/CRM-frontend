@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import { INewClient } from "../../api/types";
 import ModalContacts from "../modal-contacts";
+import { IInputModal } from "../input-modal/types";
 
 const initialContactData: INewClient = {
   name: "",
@@ -14,19 +15,19 @@ const initialContactData: INewClient = {
 const ModalContentAdd: FC = () => {
   const [clientData, setClientData] = useState<INewClient>(initialContactData);
 
-  const onChangeSurname = (e) =>
+  const onChangeSurname: IInputModal["onChange"] = (e) =>
     setClientData({
       ...clientData,
       surname: e.target.value,
     });
 
-  const onChangeName = (e) =>
+  const onChangeName: IInputModal["onChange"] = (e) =>
     setClientData({
       ...clientData,
       name: e.target.value,
     });
 
-  const onChangeLastName = (e) =>
+  const onChangeLastName: IInputModal["onChange"] = (e) =>
     setClientData({
       ...clientData,
       lastName: e.target.value,

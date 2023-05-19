@@ -5,7 +5,7 @@ import { IClient } from "../api/types";
 
 export interface IUseGetContacts {
   setStatus: Dispatch<SetStateAction<FETCH_STATUS>>;
-  setData: Dispatch<SetStateAction<IClient[]>>;
+  setData: Dispatch<SetStateAction<IClient[] | undefined>>;
 }
 
 const useGetContacts = ({ setStatus, setData }: IUseGetContacts) => {
