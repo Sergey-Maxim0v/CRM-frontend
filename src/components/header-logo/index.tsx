@@ -1,11 +1,7 @@
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss";
 
 const HeaderLogo = () => {
-    return (
-        <div className={styles.logo}>
-            skb.
-        </div>
-    )
-}
+  return <div className={styles.logo}>skb.</div>;
+};
 
-export default HeaderLogo
+export default HeaderLogo;

@@ -24,11 +24,12 @@
   }
 
   &:required ~ .placeholder:after {
-    content: '*';
+    content: "*";
     color: $c-violet;
   }
 
-  &:not(:placeholder-shown), &:focus {
+  &:not(:placeholder-shown),
+  &:focus {
     & ~ .placeholder {
       top: 0;
       font-weight: 400;
@@ -48,5 +49,6 @@
   font-size: 14px;
   line-height: 19px;
   color: $c-gray-placeholder;
-  transition: transform 0.2s, font-size 0.2s, top 0.2s, font-weight 0.2s, line-height 0.2s;
+  transition: transform 0.2s, font-size 0.2s, top 0.2s, font-weight 0.2s,
+    line-height 0.2s;
 }

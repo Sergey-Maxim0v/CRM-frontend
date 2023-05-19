@@ -1,3 +1,3 @@
 export interface IHeaderInput {
-    className?: string
+  className?: string;
 }

@@ -1,3 +1,3 @@
 export interface IButtonAdd {
-    openModal: () => void
+  openModal: () => void;
 }
