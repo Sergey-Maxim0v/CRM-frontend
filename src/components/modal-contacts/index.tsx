@@ -25,7 +25,6 @@ const ModalContacts: FC<IModalContacts> = ({
         ? clientData.contacts.concat(initialContact)
         : [initialContact],
     });
-    // eslint-disable-next-line
   };
 
   return (
