@@ -55,11 +55,12 @@ const ModalContentAdd: FC = () => {
       />
 
       <InputModal
-        value={clientData.lastName}
+        value={clientData.lastName ?? ""}
         onChange={onChangeLastName}
         placeholder={"Отчество"}
         type="text"
         className={styles.input}
+        required={false}
       />
 
       <ModalContacts clientData={clientData} setClientData={setClientData} />
