@@ -10,13 +10,23 @@ export interface IClient {
 
 export interface IContact {
   // должен содержать непустые свойства type и value
-  type: string;
+  type: CONTACT_TYPES;
   value: string;
 }
 
-export type INewClient = Omit<IClient, "id" | "createdAt" | "updatedAt">;
+export interface INewClient
+  extends Omit<IClient, "id" | "createdAt" | "updatedAt" | "contacts"> {
+  contacts: IContact[];
+}
 
 export interface IServerErrorMessage {
   field: string; // Название поля объекта, в котором произошла ошибка
   message: string; // Сообщение об ошибке, которое можно показать пользователю
+}
+
+export enum CONTACT_TYPES {
+  vk = "vk",
+  tel = "tel",
+  email = "email",
+  telegram = "telegram",
 }
