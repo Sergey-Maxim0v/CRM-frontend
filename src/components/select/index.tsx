@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ISelect } from "./types";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
@@ -21,6 +21,19 @@ const Select: FC<ISelect> = ({
     onChangeType(contactType);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const listener = (event: MouseEvent) => {
+      event.preventDefault();
+      setIsOpen(false);
+    };
+
+    document.addEventListener("click", listener);
+
+    return document.removeEventListener("click", listener);
+  });
+
+  // TODO: закрытие options при клике снаружи
 
   return (
     <div className={classNames(className, styles.select)}>
@@ -60,6 +73,7 @@ const Select: FC<ISelect> = ({
           className={styles.input}
           value={value}
           onChange={(event) => onChangeValue(event.target.value)}
+          placeholder="Введите данные контакта"
         />
 
         <div onClick={() => onDelete()} className={styles.deleteButton}>

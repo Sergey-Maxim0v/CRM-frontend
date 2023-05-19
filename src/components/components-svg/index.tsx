@@ -46,6 +46,7 @@ const ComponentsSVG: FC<IComponentsSVG> = ({ type, className }) => {
     case SVG_TYPES.close:
       return (
         <svg
+          className={className}
           width="17"
           height="17"
           viewBox="0 0 17 17"
@@ -63,6 +64,7 @@ const ComponentsSVG: FC<IComponentsSVG> = ({ type, className }) => {
     case SVG_TYPES.down:
       return (
         <svg
+          className={className}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -78,6 +80,7 @@ const ComponentsSVG: FC<IComponentsSVG> = ({ type, className }) => {
     case SVG_TYPES.delete:
       return (
         <svg
+          className={className}
           width="12"
           height="12"
           viewBox="0 0 12 12"
