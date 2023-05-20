@@ -1,0 +1,20 @@
+.button {
+  height: 44px;
+  width: auto;
+  padding: 10px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+  &.primary {
+    background-color: $c-violet;
+    color: $c-white;
+
+    &:hover {
+      background-color: $c-violet-light;
+    }
+  }
+}
+

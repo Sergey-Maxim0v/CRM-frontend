@@ -4,6 +4,8 @@ import InputModal from "../input-modal";
 import { INewClient } from "../../api/types";
 import ModalContacts from "../modal-contacts";
 import { IInputModal } from "../input-modal/types";
+import Button from "../button";
+import { BUTTON_TYPES } from "../../enums/button-types";
 
 const initialContactData: INewClient = {
   name: "",
@@ -32,6 +34,10 @@ const ModalContentAdd: FC = () => {
       ...clientData,
       lastName: e.target.value,
     });
+
+  const sendClientData = () => {
+    // TODO
+  };
 
   return (
     <form className={styles.row}>
@@ -66,7 +72,15 @@ const ModalContentAdd: FC = () => {
 
       <ModalContacts clientData={clientData} setClientData={setClientData} />
 
-      <p className="">// TODO: buttons</p>
+      <Button
+        type={BUTTON_TYPES.primary}
+        onClick={() => sendClientData()}
+        className={styles.buttonSend}
+      >
+        Сохранить
+      </Button>
+
+      <p className="">// TODO: отмена </p>
     </form>
   );
 };
