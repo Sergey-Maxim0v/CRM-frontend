@@ -57,11 +57,11 @@ const Select: FC<ISelect> = ({
             [styles.openOptions]: isOpen,
           })}
         >
-          {Object.keys(CONTACT_TYPES).map((contactType) => (
+          {Object.values(CONTACT_TYPES).map((contactType: CONTACT_TYPES) => (
             <div
               key={contactType}
               className={styles.option}
-              onClick={() => onClickOption(CONTACT_TYPES[contactType])}
+              onClick={() => onClickOption(contactType)}
             >
               {CONTACT_TYPE_NAMES[contactType]}
             </div>
