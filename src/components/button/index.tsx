@@ -11,7 +11,7 @@ const Button: FC<PropsWithChildren<IButton>> = ({
 }) => {
   return (
     <button
-      onClick={() => onClick?.()}
+      onClick={(event) => onClick?.(event)}
       className={classNames(className, styles.button, styles[type])}
     >
       {children}

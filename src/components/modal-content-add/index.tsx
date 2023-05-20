@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, MouseEvent } from "react";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import { INewClient } from "../../api/types";
@@ -6,6 +6,7 @@ import ModalContacts from "../modal-contacts";
 import { IInputModal } from "../input-modal/types";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../enums/button-types";
+import saveNewClient from "../../api/saveNewClient";
 
 const initialContactData: INewClient = {
   name: "",
@@ -35,8 +36,11 @@ const ModalContentAdd: FC = () => {
       lastName: e.target.value,
     });
 
-  const sendClientData = () => {
-    // TODO
+  const sendClientData = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    saveNewClient(clientData)
+      .then((r) => console.log(r))
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -74,7 +78,7 @@ const ModalContentAdd: FC = () => {
 
       <Button
         type={BUTTON_TYPES.primary}
-        onClick={() => sendClientData()}
+        onClick={(event) => sendClientData(event)}
         className={styles.buttonSend}
       >
         Сохранить
