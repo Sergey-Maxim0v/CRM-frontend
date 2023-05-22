@@ -17,7 +17,7 @@ const Content = () => {
 
       {isOpenAddModal && (
         <Modal closeModal={() => setIsOpenAddModal(false)}>
-          <ModalContentAdd />
+          <ModalContentAdd closeModal={() => setIsOpenAddModal(false)} />
         </Modal>
       )}
     </section>

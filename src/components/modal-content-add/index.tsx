@@ -7,6 +7,8 @@ import { IInputModal } from "../input-modal/types";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import saveNewClient from "../../api/saveNewClient";
+import { IModalContentAdd } from "./types";
+import ButtonCancel from "../button-cancel";
 
 const initialContactData: INewClient = {
   name: "",
@@ -15,7 +17,7 @@ const initialContactData: INewClient = {
   contacts: [],
 };
 
-const ModalContentAdd: FC = () => {
+const ModalContentAdd: FC<IModalContentAdd> = ({ closeModal }) => {
   const [clientData, setClientData] = useState<INewClient>(initialContactData);
 
   const onChangeSurname: IInputModal["onChange"] = (e) =>
@@ -84,7 +86,9 @@ const ModalContentAdd: FC = () => {
         Сохранить
       </Button>
 
-      <p className="">// TODO: отмена </p>
+      <ButtonCancel className={styles.buttonClose} onClick={() => closeModal()}>
+        Отмена
+      </ButtonCancel>
     </form>
   );
 };
