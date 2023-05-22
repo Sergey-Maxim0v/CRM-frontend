@@ -6,6 +6,7 @@ const useGetContacts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<IClient[]>([]);
+  const [cancel, setCancel] = useState<() => void>();
 
   const refetch = async () => {
     setIsLoading(true);
@@ -13,7 +14,8 @@ const useGetContacts = () => {
     await getContacts()
       .then((response) => {
         if (response) {
-          setData(response);
+          setData(response.data);
+          setCancel(response.cancel);
         } else {
           console.error("ERROR GET CONTACTS: no data");
         }
@@ -29,6 +31,10 @@ const useGetContacts = () => {
     refetch().catch((error) =>
       console.error("Error refetch clients:::", error)
     );
+
+    return () => {
+      cancel?.();
+    };
 
     // eslint-disable-next-line
   }, []);
