@@ -14,8 +14,9 @@ export interface ITable {
 export interface IColumn {
   headChildren: ReactElement;
   rowKey: TABLE_COLUMNS_ENUM;
-  headStyle?: string;
-  rowStyle?: string;
+  headCellStyle: string;
+  rowCellStyle: string;
+  cellStyle: string;
   onClickHead?: () => void;
 }
 

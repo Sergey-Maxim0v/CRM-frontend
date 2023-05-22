@@ -14,41 +14,42 @@ const Table: FC<ITable> = ({
   isLoading,
 }) => {
   return (
-    <table className={classNames(styles.table, tableStyle)}>
-      <thead className={classNames(styles.tableHead, tableHeadStyle)}>
+    <div className={classNames(styles.table, tableStyle)}>
+      <div className={classNames(styles.tableHead, tableHeadStyle)}>
         {columns.map((column) => (
-          <th
+          <div
             onClick={() => column.onClickHead}
-            className={classNames(column.headStyle)}
+            className={classNames(column.headCellStyle)}
           >
             {column.headChildren}
-          </th>
+          </div>
         ))}
-      </thead>
+      </div>
 
-      <tbody className={classNames(styles.tableBody, tableBodyStyle)}>
-        {isLoading ? (
-          <tr className={styles.loaderRow}>
-            <Loader className={styles.loader} />
-          </tr>
+      <div className={classNames(styles.tableBody, tableBodyStyle)}>
+        {isLoading && <Loader className={styles.loader} />}
+
+        {!isLoading && !rows.length ? (
+          <span>Список клиентов пуст.</span>
         ) : (
           rows.map((row) => (
-            <tr className={tableRowStyle}>
+            <div className={classNames(tableRowStyle, styles.tableRow)}>
               {columns.map((column) => (
-                <td
+                <div
                   className={classNames(
-                    column.rowStyle,
-                    row[column.rowKey].className
+                    column.rowCellStyle,
+                    row[column.rowKey].className,
+                    styles.tableRowCell
                   )}
                 >
                   {row[column.rowKey].element}
-                </td>
+                </div>
               ))}
-            </tr>
+            </div>
           ))
         )}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 };
 

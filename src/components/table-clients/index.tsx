@@ -21,17 +21,15 @@ const TableClients: FC = () => {
   }, [filter]);
 
   return (
-    <div className={styles.row}>
-      <Table
-        rows={rows}
-        columns={columns}
-        tableHeadStyle={styles.head}
-        tableRowStyle={styles.row}
-        tableStyle={styles.table}
-        tableBodyStyle={styles.body}
-        isLoading={isLoading}
-      />
-    </div>
+    <Table
+      rows={rows}
+      columns={columns}
+      tableHeadStyle={styles.head}
+      tableRowStyle={styles.row}
+      tableStyle={styles.table}
+      tableBodyStyle={styles.body}
+      isLoading={isLoading}
+    />
   );
 };
 
