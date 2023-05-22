@@ -28,7 +28,9 @@ const Table: FC<ITable> = ({
 
       <tbody className={classNames(styles.tableBody, tableBodyStyle)}>
         {isLoading ? (
-          <Loader className={styles.loader} />
+          <tr className={styles.loaderRow}>
+            <Loader className={styles.loader} />
+          </tr>
         ) : (
           rows.map((row) => (
             <tr className={tableRowStyle}>
