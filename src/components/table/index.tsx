@@ -33,8 +33,13 @@ const Table: FC<ITable> = ({
           rows.map((row) => (
             <tr className={tableRowStyle}>
               {columns.map((column) => (
-                <td className={classNames(column.rowStyle)}>
-                  {row[column.rowKey]}
+                <td
+                  className={classNames(
+                    column.rowStyle,
+                    row[column.rowKey].className
+                  )}
+                >
+                  {row[column.rowKey].element}
                 </td>
               ))}
             </tr>

@@ -20,5 +20,5 @@ export interface IColumn {
 }
 
 export interface IRow {
-  [key: string]: ReactElement; // [key: TABLE_COLUMNS_ENUM]: ReactElement
+  [key: string]: { element: ReactElement; className?: string };
 }
