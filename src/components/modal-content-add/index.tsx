@@ -1,4 +1,4 @@
-import { FC, useState, MouseEvent } from "react";
+import { FC, useState, MouseEvent, useContext } from "react";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import { INewClient } from "../../api/types";
@@ -9,6 +9,7 @@ import { BUTTON_TYPES } from "../../enums/button-types";
 import saveNewClient from "../../api/saveNewClient";
 import { IModalContentAdd } from "./types";
 import ButtonCancel from "../button-cancel";
+import { Context } from "../../context/context";
 
 const initialContactData: INewClient = {
   name: "",
@@ -18,6 +19,8 @@ const initialContactData: INewClient = {
 };
 
 const ModalContentAdd: FC<IModalContentAdd> = ({ closeModal }) => {
+  const { refetch } = useContext(Context);
+
   const [clientData, setClientData] = useState<INewClient>(initialContactData);
 
   const onChangeSurname: IInputModal["onChange"] = (e) =>
@@ -41,7 +44,8 @@ const ModalContentAdd: FC<IModalContentAdd> = ({ closeModal }) => {
   const sendClientData = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     saveNewClient(clientData)
-      .then((r) => console.log(r))
+      .then(() => refetch())
+      .then(() => closeModal())
       .catch((e) => console.log(e));
   };
 

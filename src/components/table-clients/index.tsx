@@ -1,20 +1,34 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import { Context } from "../../context/context";
-import useGetContacts from "../../hooks/useGetContacts";
-import FETCH_STATUS from "../../enums/fetch-status";
-import { IClient } from "../../api/types";
+import Table from "../table";
+import { IColumn, IRow } from "../table/types";
+import styles from "./styles.module.scss";
+import Loader from "../loader";
 
 const TableClients: FC = () => {
-  const { filter } = useContext(Context);
+  const { filter, clientsData, isLoading } = useContext(Context);
 
-  const [status, setStatus] = useState<FETCH_STATUS>(FETCH_STATUS.load);
-  const [data, setData] = useState<IClient[]>();
+  const rows: IRow[] = [];
+  const columns: IColumn[] = [];
 
-  useGetContacts({ setStatus, setData });
+  console.log(clientsData);
 
-  console.log(data);
-
-  return <>// TODO: TableClients</>;
+  return (
+    <>
+      {isLoading ? (
+        <Loader className={styles.loader} />
+      ) : (
+        <Table
+          rows={rows}
+          columns={columns}
+          tableHeadStyle={styles.head}
+          tableRowStyle={styles.row}
+          tableStyle={styles.table}
+          tableBodyStyle={styles.body}
+        />
+      )}
+    </>
+  );
 };
 
 export default TableClients;

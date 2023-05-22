@@ -1,31 +1,39 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useEffect, useState } from "react";
 import getContacts from "../api/getContacts";
-import FETCH_STATUS from "../enums/fetch-status";
 import { IClient } from "../api/types";
 
-export interface IUseGetContacts {
-  setStatus: Dispatch<SetStateAction<FETCH_STATUS>>;
-  setData: Dispatch<SetStateAction<IClient[] | undefined>>;
-}
+const useGetContacts = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [data, setData] = useState<IClient[]>([]);
 
-const useGetContacts = ({ setStatus, setData }: IUseGetContacts) => {
-  useEffect(() => {
-    getContacts()
+  const refetch = async () => {
+    setIsLoading(true);
+
+    await getContacts()
       .then((response) => {
-        if (response.data) {
-          setData(response.data);
-          setStatus(FETCH_STATUS.success);
+        if (response) {
+          setData(response);
         } else {
-          setStatus(FETCH_STATUS.error);
           console.error("ERROR GET CONTACTS: no data");
         }
+        setIsLoading(false);
       })
       .catch((error) => {
-        setStatus(FETCH_STATUS.error);
+        setIsError(true);
         console.error("ERROR GET CONTACTS:::", error);
       });
+  };
+
+  useEffect(() => {
+    refetch().catch((error) =>
+      console.error("Error refetch clients:::", error)
+    );
+
     // eslint-disable-next-line
   }, []);
+
+  return { refetch, isLoading, isError, data };
 };
 
 export default useGetContacts;

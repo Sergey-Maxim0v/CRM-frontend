@@ -6,6 +6,7 @@ export interface ITable {
   tableStyle?: string;
   tableHeadStyle?: string;
   tableRowStyle?: string;
+  tableBodyStyle?: string;
 }
 
 export interface IColumn {

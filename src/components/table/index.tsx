@@ -9,10 +9,11 @@ const Table: FC<ITable> = ({
   tableStyle,
   tableRowStyle,
   tableHeadStyle,
+  tableBodyStyle,
 }) => {
   return (
     <table className={classNames(styles.table, tableStyle)}>
-      <tr className={classNames(styles.tableHead, tableHeadStyle)}>
+      <thead className={classNames(styles.tableHead, tableHeadStyle)}>
         {columns.map((column) => (
           <th
             onClick={() => column.onClickHead}
@@ -21,17 +22,19 @@ const Table: FC<ITable> = ({
             {column.headChildren}
           </th>
         ))}
-      </tr>
+      </thead>
 
-      {rows.map((row) => (
-        <tr className={tableRowStyle}>
-          {columns.map((column) => (
-            <td className={classNames(column.rowStyle)}>
-              {row[column.rowKey]}
-            </td>
-          ))}
-        </tr>
-      ))}
+      <tbody className={classNames(styles.tableBody, tableBodyStyle)}>
+        {rows.map((row) => (
+          <tr className={tableRowStyle}>
+            {columns.map((column) => (
+              <td className={classNames(column.rowStyle)}>
+                {row[column.rowKey]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
