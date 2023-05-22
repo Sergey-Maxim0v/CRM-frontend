@@ -6,6 +6,7 @@ export interface IContext {
   setFilter: (val: string | undefined) => void;
   refetch: () => Promise<void>;
   clientsData: IClient[];
+  isLoading: boolean;
 }
 
 export const Context = createContext<IContext>({
@@ -15,4 +16,5 @@ export const Context = createContext<IContext>({
   },
   refetch: () => new Promise<void>(() => undefined),
   clientsData: [],
+  isLoading: false,
 });

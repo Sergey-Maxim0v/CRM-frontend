@@ -14,12 +14,10 @@ const getContacts = async (): Promise<{
     signal: controller.signal,
   });
 
-  if (res.data) {
-    return {
-      data: res.data as IClient[],
-      cancel,
-    };
-  }
+  return {
+    data: res.data as IClient[],
+    cancel,
+  };
 };
 
 export default getContacts;

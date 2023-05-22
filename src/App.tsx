@@ -16,6 +16,7 @@ function App() {
     setFilter,
     refetch,
     clientsData,
+    isLoading,
   };
 
   useEffect(() => setClientsData(data), [data]);
