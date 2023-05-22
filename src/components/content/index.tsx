@@ -1,10 +1,10 @@
 import PageTitle from "../page-title";
-import Table from "../table";
 import ButtonAdd from "../button-add";
 import stiles from "./styles.module.scss";
 import { useState } from "react";
 import Modal from "../modal";
 import ModalContentAdd from "../modal-content-add";
+import TableClients from "../table-clients";
 
 const Content = () => {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
@@ -12,7 +12,7 @@ const Content = () => {
   return (
     <section className={stiles.row}>
       <PageTitle />
-      <Table />
+      <TableClients />
       <ButtonAdd openModal={() => setIsOpenAddModal(true)} />
 
       {isOpenAddModal && (

@@ -1,20 +1,39 @@
-import { FC, useContext, useState } from "react";
-import { Context } from "../../context/context";
-import useGetContacts from "../../hooks/useGetContacts";
-import FETCH_STATUS from "../../enums/fetch-status";
-import { IClient } from "../../api/types";
+import { FC } from "react";
+import { ITable } from "./types";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
-const Table: FC = () => {
-  const { filter } = useContext(Context);
+const Table: FC<ITable> = ({
+  columns,
+  rows,
+  tableStyle,
+  tableRowStyle,
+  tableHeadStyle,
+}) => {
+  return (
+    <table className={classNames(styles.table, tableStyle)}>
+      <tr className={classNames(styles.tableHead, tableHeadStyle)}>
+        {columns.map((column) => (
+          <th
+            onClick={() => column.onClickHead}
+            className={classNames(column.headStyle)}
+          >
+            {column.headChildren}
+          </th>
+        ))}
+      </tr>
 
-  const [status, setStatus] = useState<FETCH_STATUS>(FETCH_STATUS.load);
-  const [data, setData] = useState<IClient[]>();
-
-  useGetContacts({ setStatus, setData });
-
-  console.log(data);
-
-  return <>// TODO: table</>;
+      {rows.map((row) => (
+        <tr className={tableRowStyle}>
+          {columns.map((column) => (
+            <td className={classNames(column.rowStyle)}>
+              {row[column.rowKey]}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </table>
+  );
 };
 
 export default Table;
