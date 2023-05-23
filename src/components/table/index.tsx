@@ -20,7 +20,16 @@ const Table: FC<ITable> = ({
           <div
             key={`head-cell-${column.rowKey}`}
             onClick={() => column.onClickHead}
-            className={classNames(column.headCellStyle)}
+            className={classNames(column.headCellStyle, styles.tableHeadCell)}
+            style={
+              column.width
+                ? {
+                    width: `${column.width}px`,
+                    minWidth: `${column.width}px`,
+                    maxWidth: `${column.width}px`,
+                  }
+                : {}
+            }
           >
             {column.headChildren}
           </div>
@@ -46,6 +55,15 @@ const Table: FC<ITable> = ({
                     row[column.rowKey].className,
                     styles.tableRowCell
                   )}
+                  style={
+                    column.width
+                      ? {
+                          width: `${column.width}px`,
+                          minWidth: `${column.width}px`,
+                          maxWidth: `${column.width}px`,
+                        }
+                      : {}
+                  }
                 >
                   {row[column.rowKey].element}
                 </div>

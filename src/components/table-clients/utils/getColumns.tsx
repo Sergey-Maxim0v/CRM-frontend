@@ -3,10 +3,11 @@ import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import HeadCell from "../components/head-cell";
 import { ARROW_ENUM } from "../types";
+import classNames from "classnames";
 
 const getColumns = (): IColumn[] => {
   // TODO: sort functions
-  const TODO_KOSTYL = false;
+  const TODO_KOSTYL = true;
 
   return [
     {
@@ -17,9 +18,10 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
+      width: 82,
       rowKey: TABLE_COLUMNS_ENUM.id,
-      headCellStyle: styles.columnHeadCellId,
-      cellStyle: styles.columnRowCellId,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__id),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__id),
       onClickHead: () => {
         // TODO: sort by id
       },
@@ -32,9 +34,10 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
+      width: 370,
       rowKey: TABLE_COLUMNS_ENUM.name,
-      headCellStyle: styles.columnHeadCellId,
-      cellStyle: styles.columnRowCellId,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__name),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__name),
       onClickHead: () => {
         // TODO: sort by name
       },
@@ -47,9 +50,10 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
+      width: 196,
       rowKey: TABLE_COLUMNS_ENUM.create,
-      headCellStyle: styles.columnHeadCellId,
-      cellStyle: styles.columnRowCellId,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__create),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__create),
       onClickHead: () => {
         // TODO: sort by date of create
       },
@@ -62,9 +66,10 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
+      width: 192,
       rowKey: TABLE_COLUMNS_ENUM.changed,
-      headCellStyle: styles.columnHeadCellId,
-      cellStyle: styles.columnRowCellId,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__changed),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__changed),
       onClickHead: () => {
         // TODO: sort by date of change
       },
@@ -78,8 +83,8 @@ const getColumns = (): IColumn[] => {
         />
       ),
       rowKey: TABLE_COLUMNS_ENUM.contacts,
-      headCellStyle: styles.columnHeadCellId,
-      cellStyle: styles.columnRowCellId,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__contacts),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__contacts),
     },
     {
       headChildren: (
@@ -89,9 +94,10 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
+      width: 220,
       rowKey: TABLE_COLUMNS_ENUM.actions,
-      headCellStyle: styles.columnHeadCellId,
-      cellStyle: styles.columnRowCellId,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__actions),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__actions),
     },
   ];
 };

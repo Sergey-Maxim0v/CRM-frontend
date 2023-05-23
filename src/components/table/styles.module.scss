@@ -1,28 +1,36 @@
 .table {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .tableHead {
-
+  width: 100%;
+  display: flex;
 }
 
 .tableHeadCell {
-
+flex-grow: 1;
 }
 
 .tableBody {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
+
 }
 
 .tableRow {
-
+  width: 100%;
 }
 
 .tableRowCell {
-
+flex-grow: 1;
 }
 
 .loader {

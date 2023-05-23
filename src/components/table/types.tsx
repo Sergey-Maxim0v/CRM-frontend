@@ -16,6 +16,7 @@ export interface IColumn {
   rowKey: TABLE_COLUMNS_ENUM;
   headCellStyle: string;
   cellStyle: string;
+  width?: number;
   onClickHead?: () => void;
 }
 

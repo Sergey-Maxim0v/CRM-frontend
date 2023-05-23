@@ -1,8 +1,9 @@
-.row {
-
-}
 
 .table {
+  width: 1186px;
+  min-width: 1186px;
+  height: auto;
+  min-height: 360px;
   margin-bottom: 40px;
 }
 
@@ -11,6 +12,7 @@
 }
 
 .body {
+  background-color: $c-white;
 }
 
 .row {
@@ -19,8 +21,48 @@
 .loader {
 }
 
-.columnHeadCellId {
+.columnHeadCell {
+  padding: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: $c-gray-placeholder;
+  transition: color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: $c-violet;
+  }
 }
 
-.columnRowCellId {
+.columnRowCell {
+  padding: 20px;
+}
+
+.cell {
+  &__id {
+
+  }
+
+  &__name {
+
+  }
+
+  &__create {
+
+  }
+
+  &__changed {
+
+  }
+
+  &__contacts {
+    flex-grow: 1;
+  }
+
+  &__actions {
+
+  }
 }
