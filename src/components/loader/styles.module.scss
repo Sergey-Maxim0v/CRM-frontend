@@ -1,1 +1,27 @@
-.loader{}
+.loader {
+  animation: animationOpacity 200ms;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  animation: animationRotate 1700ms infinite linear;
+}
+
+@keyframes animationRotate {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes animationOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

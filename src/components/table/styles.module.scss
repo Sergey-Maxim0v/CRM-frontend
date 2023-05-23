@@ -35,6 +35,9 @@ flex-grow: 1;
 
 .loader {
   margin: auto;
+  width: 72px;
+  height: 72px;
+  color: $c-violet;
 }
 
 .noRowMessage {
