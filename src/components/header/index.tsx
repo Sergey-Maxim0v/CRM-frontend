@@ -13,15 +13,17 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <a href="/" className={styles.logo}>
-        <HeaderLogo />
-      </a>
+      <div className={styles.row}>
+        <a href="/" className={styles.logo}>
+          <HeaderLogo />
+        </a>
 
-      <HeaderInput
-        className={styles.input}
-        value={filter ?? ""}
-        onChange={onChange}
-      />
+        <HeaderInput
+          className={styles.input}
+          value={filter ?? ""}
+          onChange={onChange}
+        />
+      </div>
     </header>
   );
 };

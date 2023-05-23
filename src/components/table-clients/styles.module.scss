@@ -1,7 +1,9 @@
 
 .table {
-  width: 1186px;
-  min-width: 1186px;
+  margin-left: auto;
+  margin-right: auto;
+  width: $w-page;
+  min-width: $w-page;
   height: auto;
   min-height: 360px;
   margin-bottom: 40px;
@@ -22,7 +24,7 @@
 }
 
 .columnHeadCell {
-  padding: 20px;
+  padding: 8px 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 400;
