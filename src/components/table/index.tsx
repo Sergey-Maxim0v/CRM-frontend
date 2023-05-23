@@ -18,6 +18,7 @@ const Table: FC<ITable> = ({
       <div className={classNames(styles.tableHead, tableHeadStyle)}>
         {columns.map((column) => (
           <div
+            key={`head-cell-${column.rowKey}`}
             onClick={() => column.onClickHead}
             className={classNames(column.headCellStyle)}
           >
@@ -30,14 +31,18 @@ const Table: FC<ITable> = ({
         {isLoading && <Loader className={styles.loader} />}
 
         {!isLoading && !rows.length ? (
-          <span>Список клиентов пуст.</span>
+          <div className={styles.noRowMessage}>Список клиентов пуст.</div>
         ) : (
           rows.map((row) => (
-            <div className={classNames(tableRowStyle, styles.tableRow)}>
+            <div
+              key={`row-${row.id}`}
+              className={classNames(tableRowStyle, styles.tableRow)}
+            >
               {columns.map((column) => (
                 <div
+                  key={`${row[column.rowKey].id}-${column.rowKey}`}
                   className={classNames(
-                    column.rowCellStyle,
+                    column.cellStyle,
                     row[column.rowKey].className,
                     styles.tableRowCell
                   )}

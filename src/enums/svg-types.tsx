@@ -4,6 +4,7 @@ enum SVG_TYPES {
   close = "svg-close",
   down = "down",
   delete = "delete",
+  arrowUp = "arrowUp",
 }
 
 export default SVG_TYPES;

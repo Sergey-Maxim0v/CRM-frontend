@@ -1,5 +1,5 @@
 .table {
-
+  width: 100%;
 }
 
 .tableHead {
@@ -11,6 +11,10 @@
 }
 
 .tableBody {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 
 .tableRow {
@@ -22,5 +26,9 @@
 }
 
 .loader {
+  margin: auto;
 }
 
+.noRowMessage {
+  margin: auto
+}

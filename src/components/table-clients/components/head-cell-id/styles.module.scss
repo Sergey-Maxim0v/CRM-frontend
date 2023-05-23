@@ -1,0 +1,25 @@
+.cell {
+  width: 100%;
+  height: 100%;
+  transition: color 0.2s;
+}
+
+.text {
+}
+
+.icon {
+  display: none;
+  margin: 2px;
+  width: 8px;
+  height: 8px;
+  transition: transform 0.2s;
+  color: $c-violet;
+}
+
+.filtered {
+  display: flex;
+}
+
+.arrowUp{
+transform: rotateX(180deg);
+}

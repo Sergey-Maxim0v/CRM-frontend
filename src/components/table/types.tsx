@@ -15,11 +15,11 @@ export interface IColumn {
   headChildren: ReactElement;
   rowKey: TABLE_COLUMNS_ENUM;
   headCellStyle: string;
-  rowCellStyle: string;
   cellStyle: string;
   onClickHead?: () => void;
 }
 
 export interface IRow {
-  [key: string]: { element: ReactElement; className?: string };
+  id: string;
+  [key: string]: { id: string; element: ReactElement; className?: string }; // key: TABLE_COLUMNS_ENUM
 }
