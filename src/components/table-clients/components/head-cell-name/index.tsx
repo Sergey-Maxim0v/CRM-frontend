@@ -1,14 +1,14 @@
 import { FC } from "react";
-import styles from "./styles.module.scss";
 import ComponentsSVG from "../../../components-svg";
 import SVG_TYPES from "../../../../enums/svg-types";
 import classNames from "classnames";
 import { ARROW_ENUM, IHeadCell } from "../../types";
+import styles from "./styles.module.scss";
 
-const HeadCellId: FC<IHeadCell> = ({ sorted, arrow }) => {
+const HeadCellName: FC<IHeadCell> = ({ sorted, arrow }) => {
   return (
     <p className={styles.cell}>
-      <span className={styles.text}>ID</span>
+      <span className={styles.text}>Фамилия Имя Отчество</span>
       <ComponentsSVG
         type={SVG_TYPES.arrowUp}
         className={classNames(
@@ -17,8 +17,15 @@ const HeadCellId: FC<IHeadCell> = ({ sorted, arrow }) => {
           { [styles.arrowUp]: arrow === ARROW_ENUM.up }
         )}
       />
+      <span
+        className={classNames(styles.description, {
+          [styles.sorted]: sorted,
+        })}
+      >
+        {arrow === ARROW_ENUM.up ? "Я-А" : "А-Я"}
+      </span>
     </p>
   );
 };
 
-export default HeadCellId;
+export default HeadCellName;

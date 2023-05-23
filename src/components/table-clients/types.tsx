@@ -1,6 +1,6 @@
 export interface IHeadCell {
   sorted: boolean;
-  arrow?: ARROW_ENUM.up;
+  arrow: ARROW_ENUM.up | undefined;
 }
 
 export enum ARROW_ENUM {
