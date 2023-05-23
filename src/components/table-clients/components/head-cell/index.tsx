@@ -4,11 +4,12 @@ import ComponentsSVG from "../../../components-svg";
 import SVG_TYPES from "../../../../enums/svg-types";
 import classNames from "classnames";
 import { ARROW_ENUM, IHeadCell } from "../../types";
+import getHeadCellText from "../../utils/getHeadCellText";
 
-const HeadCellId: FC<IHeadCell> = ({ sorted, arrow }) => {
+const HeadCell: FC<IHeadCell> = ({ sorted, type, arrow }) => {
   return (
     <p className={styles.cell}>
-      <span className={styles.text}>ID</span>
+      <span className={styles.text}>{getHeadCellText(type)}</span>
       <ComponentsSVG
         type={SVG_TYPES.arrowUp}
         className={classNames(
@@ -21,4 +22,4 @@ const HeadCellId: FC<IHeadCell> = ({ sorted, arrow }) => {
   );
 };
 
-export default HeadCellId;
+export default HeadCell;
