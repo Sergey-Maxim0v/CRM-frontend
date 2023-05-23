@@ -7,11 +7,15 @@ import HeadCellName from "../components/head-cell-name";
 
 const getColumns = (): IColumn[] => {
   // TODO: sort functions
+  const TODO_KOSTYL = false;
 
   return [
     {
       headChildren: (
-        <HeadCellId sorted={false} arrow={true ? undefined : ARROW_ENUM.up} />
+        <HeadCellId
+          sorted={TODO_KOSTYL}
+          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+        />
       ),
       rowKey: TABLE_COLUMNS_ENUM.id,
       headCellStyle: styles.columnHeadCellId,
@@ -23,8 +27,8 @@ const getColumns = (): IColumn[] => {
     {
       headChildren: (
         <HeadCellName
-          sorted={false}
-          arrow={false ? undefined : ARROW_ENUM.up}
+          sorted={TODO_KOSTYL}
+          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
       rowKey: TABLE_COLUMNS_ENUM.name,
