@@ -8,7 +8,7 @@ const getHeadCellText = (type: TABLE_COLUMNS_ENUM) => {
       return "Фамилия Имя Отчество";
     case TABLE_COLUMNS_ENUM.create:
       return "Дата и время создания";
-    case TABLE_COLUMNS_ENUM.changed:
+    case TABLE_COLUMNS_ENUM.update:
       return "Последние изменения";
     case TABLE_COLUMNS_ENUM.contacts:
       return "Контакты";

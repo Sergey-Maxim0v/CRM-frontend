@@ -27,10 +27,10 @@ const getRows = (data: IClient[]): IRow[] =>
       className: styles.bodyCell__create,
     };
 
-    const changedCell: ICell = {
-      id: `cell-changed-${client.id}`,
+    const updateCell: ICell = {
+      id: `cell-update-${client.id}`,
       element: <CellDate client={client} type={CELL_DATE_ENUM.create} />,
-      className: styles.bodyCell__changed,
+      className: styles.bodyCell__update,
     };
 
     const contactsCell: ICell = {
@@ -51,7 +51,7 @@ const getRows = (data: IClient[]): IRow[] =>
         [TABLE_COLUMNS_ENUM.id]: idCell,
         [TABLE_COLUMNS_ENUM.name]: nameCell,
         [TABLE_COLUMNS_ENUM.create]: createCell,
-        [TABLE_COLUMNS_ENUM.changed]: changedCell,
+        [TABLE_COLUMNS_ENUM.update]: updateCell,
         [TABLE_COLUMNS_ENUM.contacts]: contactsCell,
         [TABLE_COLUMNS_ENUM.actions]: actionsCell,
       },

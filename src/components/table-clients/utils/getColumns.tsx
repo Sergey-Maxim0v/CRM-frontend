@@ -60,15 +60,15 @@ const getColumns = (): IColumn[] => {
     {
       headChildren: (
         <HeadCell
-          type={TABLE_COLUMNS_ENUM.changed}
+          type={TABLE_COLUMNS_ENUM.update}
           sorted={TODO_KOSTYL}
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
       width: 192,
-      rowKey: TABLE_COLUMNS_ENUM.changed,
-      headCellStyle: classNames(styles.columnHeadCell, styles.cell__changed),
-      cellStyle: classNames(styles.columnRowCell, styles.cell__changed),
+      rowKey: TABLE_COLUMNS_ENUM.update,
+      headCellStyle: classNames(styles.columnHeadCell, styles.cell__update),
+      cellStyle: classNames(styles.columnRowCell, styles.cell__update),
       onClickHead: () => {
         // TODO: sort by date of change
       },

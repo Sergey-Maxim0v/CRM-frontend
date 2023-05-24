@@ -2,7 +2,7 @@ export enum TABLE_COLUMNS_ENUM {
   id = "idRow",
   name = "nameRow",
   create = "createRow",
-  changed = "changedRow",
+  update = "updateRow",
   contacts = "contactsRow",
   actions = "actionsRow",
 }
