@@ -2,12 +2,13 @@ import { IClient } from "../../../api/types";
 import { ICell, IRow } from "../../table/types";
 import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
+import CellId from "../components/cell-id";
 
 const getRows = (data: IClient[]): IRow[] =>
   data.reduce((result: IRow[], client) => {
     const idCell: ICell = {
       id: `cell-id-${client.id}`,
-      element: <>// TODO: cell-id</>,
+      element: <CellId id={client.id} />,
       className: styles.bodyCell__id,
     };
 

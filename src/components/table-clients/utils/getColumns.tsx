@@ -18,7 +18,7 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
-      width: 82,
+      width: 130,
       rowKey: TABLE_COLUMNS_ENUM.id,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__id),
       cellStyle: classNames(styles.columnRowCell, styles.cell__id),
