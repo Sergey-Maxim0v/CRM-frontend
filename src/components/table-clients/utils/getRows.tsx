@@ -4,7 +4,8 @@ import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import CellId from "../components/cell-id";
 import CellName from "../components/cell-name";
-import CellCreate from "../components/cell-create";
+import CellDate from "../components/cell-date";
+import { CELL_DATE_ENUM } from "../components/cell-date/types";
 
 const getRows = (data: IClient[]): IRow[] =>
   data.reduce((result: IRow[], client) => {
@@ -22,13 +23,13 @@ const getRows = (data: IClient[]): IRow[] =>
 
     const createCell: ICell = {
       id: `cell-create-${client.id}`,
-      element: <CellCreate client={client} />,
+      element: <CellDate client={client} type={CELL_DATE_ENUM.create} />,
       className: styles.bodyCell__create,
     };
 
     const changedCell: ICell = {
       id: `cell-changed-${client.id}`,
-      element: <>// TODO: cell-changed</>,
+      element: <CellDate client={client} type={CELL_DATE_ENUM.create} />,
       className: styles.bodyCell__changed,
     };
 
