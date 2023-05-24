@@ -3,6 +3,7 @@ import { ICell, IRow } from "../../table/types";
 import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import CellId from "../components/cell-id";
+import CellName from "../components/cell-name";
 
 const getRows = (data: IClient[]): IRow[] =>
   data.reduce((result: IRow[], client) => {
@@ -14,7 +15,7 @@ const getRows = (data: IClient[]): IRow[] =>
 
     const nameCell: ICell = {
       id: `cell-name-${client.id}`,
-      element: <>// TODO: cell-name</>,
+      element: <CellName client={client} />,
       className: styles.bodyCell__name,
     };
 

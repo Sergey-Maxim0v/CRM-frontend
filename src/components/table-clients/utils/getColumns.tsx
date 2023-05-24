@@ -34,7 +34,6 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
-      width: 370,
       rowKey: TABLE_COLUMNS_ENUM.name,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__name),
       cellStyle: classNames(styles.columnRowCell, styles.cell__name),
@@ -82,6 +81,7 @@ const getColumns = (): IColumn[] => {
           arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
         />
       ),
+      width: 176,
       rowKey: TABLE_COLUMNS_ENUM.contacts,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__contacts),
       cellStyle: classNames(styles.columnRowCell, styles.cell__contacts),
