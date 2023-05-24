@@ -22,5 +22,13 @@ export interface IColumn {
 
 export interface IRow {
   id: string;
-  [key: string]: { id: string; element: ReactElement; className?: string }; // key: TABLE_COLUMNS_ENUM
+  cells: {
+    [key in TABLE_COLUMNS_ENUM]: ICell;
+  };
+}
+
+export interface ICell {
+  id: string;
+  element: ReactElement;
+  className?: string;
 }

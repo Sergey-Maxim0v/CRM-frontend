@@ -49,10 +49,10 @@ const Table: FC<ITable> = ({
             >
               {columns.map((column) => (
                 <div
-                  key={`${row[column.rowKey].id}-${column.rowKey}`}
+                  key={`${row.cells[column.rowKey].id}-${column.rowKey}`}
                   className={classNames(
                     column.cellStyle,
-                    row[column.rowKey].className,
+                    row.cells[column.rowKey].className,
                     styles.tableRowCell
                   )}
                   style={
@@ -65,7 +65,7 @@ const Table: FC<ITable> = ({
                       : {}
                   }
                 >
-                  {row[column.rowKey].element}
+                  {row.cells[column.rowKey]?.element}
                 </div>
               ))}
             </div>

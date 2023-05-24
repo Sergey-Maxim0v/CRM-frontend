@@ -5,7 +5,7 @@
   width: $w-page;
   min-width: $w-page;
   height: auto;
-  min-height: 360px;
+  min-height: 328px;
   margin-bottom: 40px;
 }
 
@@ -61,7 +61,31 @@
   }
 
   &__contacts {
-    flex-grow: 1;
+  }
+
+  &__actions {
+
+  }
+}
+
+.bodyCell{
+  &__id {
+
+  }
+
+  &__name {
+
+  }
+
+  &__create {
+
+  }
+
+  &__changed {
+
+  }
+
+  &__contacts {
   }
 
   &__actions {

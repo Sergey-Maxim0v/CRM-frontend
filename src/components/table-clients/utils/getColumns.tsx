@@ -7,7 +7,7 @@ import classNames from "classnames";
 
 const getColumns = (): IColumn[] => {
   // TODO: sort functions
-  const TODO_KOSTYL = true;
+  const TODO_KOSTYL = false;
 
   return [
     {

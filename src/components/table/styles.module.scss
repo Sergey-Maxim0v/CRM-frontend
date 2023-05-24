@@ -11,7 +11,7 @@
 }
 
 .tableHeadCell {
-flex-grow: 1;
+  flex-grow: 1;
 }
 
 .tableBody {
@@ -27,10 +27,15 @@ flex-grow: 1;
 
 .tableRow {
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .tableRowCell {
-flex-grow: 1;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
 }
 
 .loader {

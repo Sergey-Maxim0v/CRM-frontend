@@ -4,6 +4,7 @@ import Table from "../table";
 import { IColumn, IRow } from "../table/types";
 import styles from "./styles.module.scss";
 import getColumns from "./utils/getColumns";
+import getRows from "./utils/getRows";
 
 const TableClients: FC = () => {
   const { filter, clientsData, isLoading } = useContext(Context);
@@ -12,9 +13,8 @@ const TableClients: FC = () => {
   const columns: IColumn[] = useMemo(() => getColumns(), []);
 
   useEffect(() => {
-    const tableRows: IRow[] = []; // TODO: function create rows
-    setRows(tableRows);
-  }, []);
+    setRows(getRows(clientsData));
+  }, [clientsData]);
 
   useEffect(() => {
     // TODO: filter rows
