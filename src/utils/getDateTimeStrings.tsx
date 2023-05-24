@@ -3,6 +3,8 @@ export interface IGetDateTimeStrings {
   time: string;
 }
 
+const getTimeWithZero = (time: number) => (time > 9 ? time : `0${time}`);
+
 const getDateTimeStrings = (date: Date): IGetDateTimeStrings => {
   if (
     isNaN(date.getDate()) ||
@@ -11,14 +13,17 @@ const getDateTimeStrings = (date: Date): IGetDateTimeStrings => {
     isNaN(date.getHours()) ||
     isNaN(date.getMinutes())
   ) {
-    console.warn("invalid date:::", date.toString());
+    console.warn("invalid date:::", date.toString(), date);
     return { date: "", time: "" };
   }
 
-  const month = date.getMonth() > 9 ? date.getMonth() : `0${date.getMonth()}`;
+  const month = getTimeWithZero(date.getMonth());
+  const dayDate = getTimeWithZero(date.getDate());
+  const hour = getTimeWithZero(date.getHours());
+  const minute = getTimeWithZero(date.getMinutes());
 
-  const day = `${date.getDate()}.${month}.${date.getFullYear()}`;
-  const time = `${date.getHours()}:${date.getMinutes()}`;
+  const day = `${dayDate}.${month}.${date.getFullYear()}`;
+  const time = `${hour}:${minute}`;
 
   return { date: day, time: time };
 };
