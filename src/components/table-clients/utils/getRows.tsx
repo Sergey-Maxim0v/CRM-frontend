@@ -4,6 +4,7 @@ import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import CellId from "../components/cell-id";
 import CellName from "../components/cell-name";
+import CellCreate from "../components/cell-create";
 
 const getRows = (data: IClient[]): IRow[] =>
   data.reduce((result: IRow[], client) => {
@@ -21,7 +22,7 @@ const getRows = (data: IClient[]): IRow[] =>
 
     const createCell: ICell = {
       id: `cell-create-${client.id}`,
-      element: <>// TODO: cell-create</>,
+      element: <CellCreate client={client} />,
       className: styles.bodyCell__create,
     };
 
