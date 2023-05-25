@@ -21,7 +21,6 @@ const TableClients: FC = () => {
 
   useEffect(() => {
     // TODO: filter rows by header
-    setRows([]);
   }, [filter]);
 
   return (
