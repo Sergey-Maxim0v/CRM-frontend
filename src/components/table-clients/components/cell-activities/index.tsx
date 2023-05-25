@@ -18,10 +18,16 @@ const CellActivities: FC<ICellActivities> = ({ client }) => {
   const onDeleteModal = async () => {
     setIsLoadDelete(true);
     setIsDeleteModal(false);
-    deleteClient(client).then(() => {
-      setIsLoadDelete(false);
-      refetch();
-    });
+    deleteClient(client)
+      .then(() => {
+        setIsLoadDelete(false);
+        refetch(); // TODO: filter rows
+      })
+      .catch((error) => {
+        console.error("error delete client:::", error);
+        setIsLoadDelete(false);
+        setIsDeleteModal(false);
+      });
   };
 
   return (
