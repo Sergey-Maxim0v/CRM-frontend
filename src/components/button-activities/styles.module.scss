@@ -15,6 +15,10 @@
     &.load {
       color: $c-violet;
     }
+
+    & .icon{
+      color: $c-violet;
+    }
   }
 
   &.delete {
@@ -27,7 +31,12 @@
     &.load {
       color: $c-red;
     }
+
+    & .icon{
+      color: $c-red;
+    }
   }
+
 }
 
 .icon {

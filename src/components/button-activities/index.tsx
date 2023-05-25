@@ -3,6 +3,8 @@ import { BUTTON_ACTIVITIES_ENUM, IButtonActivities } from "./types";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import Loader from "../loader";
+import ComponentsSVG from "../components-svg";
+import SVG_TYPES from "../../enums/svg-types";
 
 const ButtonActivities: FC<PropsWithChildren<IButtonActivities>> = ({
   children,
@@ -11,7 +13,12 @@ const ButtonActivities: FC<PropsWithChildren<IButtonActivities>> = ({
   onClick,
   isLoad,
 }) => {
-  const Icon = type === BUTTON_ACTIVITIES_ENUM.update ? <></> : <></>;
+  const Icon: FC = () =>
+    type === BUTTON_ACTIVITIES_ENUM.update ? (
+      <ComponentsSVG type={SVG_TYPES.edit} className={styles.icon} />
+    ) : (
+      <ComponentsSVG type={SVG_TYPES.delete} className={styles.icon} />
+    );
 
   return (
     <button
@@ -44,7 +51,7 @@ const ButtonActivities: FC<PropsWithChildren<IButtonActivities>> = ({
           )}
         />
       ) : (
-        Icon
+        <Icon />
       )}
 
       {children}
