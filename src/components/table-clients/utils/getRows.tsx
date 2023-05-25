@@ -9,7 +9,12 @@ import { CELL_DATE_ENUM } from "../components/cell-date/types";
 import CellContacts from "../components/cell-contacts";
 import CellActivities from "../components/cell-activities";
 
-const getRows = (data: IClient[]): IRow[] =>
+export interface IGetRows {
+  data: IClient[];
+  filterRows: (val: string) => void;
+}
+
+const getRows = ({ data, filterRows }: IGetRows): IRow[] =>
   data.reduce((result: IRow[], client) => {
     const idCell: ICell = {
       id: `cell-id-${client.id}`,
@@ -43,12 +48,13 @@ const getRows = (data: IClient[]): IRow[] =>
 
     const actionsCell: ICell = {
       id: `cell-actions-${client.id}`,
-      element: <CellActivities client={client} />,
+      element: <CellActivities client={client} filterRows={filterRows} />,
       className: styles.bodyCell__actions,
     };
 
     const row: IRow = {
       id: `row-${client.id}`,
+      client: client,
       cells: {
         [TABLE_COLUMNS_ENUM.id]: idCell,
         [TABLE_COLUMNS_ENUM.name]: nameCell,

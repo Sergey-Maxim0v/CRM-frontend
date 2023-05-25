@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { TABLE_COLUMNS_ENUM } from "../../enums/row-keys";
+import { IClient } from "../../api/types";
 
 export interface ITable {
   columns: IColumn[];
@@ -22,6 +23,7 @@ export interface IColumn {
 
 export interface IRow {
   id: string;
+  client: IClient;
   cells: {
     [key in TABLE_COLUMNS_ENUM]: ICell;
   };

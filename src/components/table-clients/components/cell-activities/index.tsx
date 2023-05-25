@@ -5,11 +5,8 @@ import ButtonActivities from "../../../button-activities";
 import { BUTTON_ACTIVITIES_ENUM } from "../../../button-activities/types";
 import ModalDelete from "../../../modal-delete";
 import deleteClient from "../../../../api/deleteClient";
-import { Context } from "../../../../context/context";
 
-const CellActivities: FC<ICellActivities> = ({ client }) => {
-  const { refetch } = useContext(Context);
-
+const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUpdateModal, setIsUpdateModal] = useState(false);
   const [isLoadUpdate, setIsLoadUpdate] = useState(false);
@@ -21,7 +18,7 @@ const CellActivities: FC<ICellActivities> = ({ client }) => {
     deleteClient(client)
       .then(() => {
         setIsLoadDelete(false);
-        refetch(); // TODO: filter rows
+        filterRows(client.id);
       })
       .catch((error) => {
         console.error("error delete client:::", error);

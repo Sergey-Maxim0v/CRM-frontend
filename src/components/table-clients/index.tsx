@@ -12,12 +12,15 @@ const TableClients: FC = () => {
 
   const columns: IColumn[] = useMemo(() => getColumns(), []);
 
+  const filterRows = (id: string) =>
+    setRows((pref) => pref.filter((row) => row.client.id !== id));
+
   useEffect(() => {
-    setRows(getRows(clientsData));
+    setRows(getRows({ data: clientsData, filterRows }));
   }, [clientsData]);
 
   useEffect(() => {
-    // TODO: filter rows
+    // TODO: filter rows by header
     setRows([]);
   }, [filter]);
 
