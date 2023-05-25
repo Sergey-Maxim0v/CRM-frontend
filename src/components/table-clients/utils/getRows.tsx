@@ -7,6 +7,7 @@ import CellName from "../components/cell-name";
 import CellDate from "../components/cell-date";
 import { CELL_DATE_ENUM } from "../components/cell-date/types";
 import CellContacts from "../components/cell-contacts";
+import CellActivities from "../components/cell-activities";
 
 const getRows = (data: IClient[]): IRow[] =>
   data.reduce((result: IRow[], client) => {
@@ -42,7 +43,7 @@ const getRows = (data: IClient[]): IRow[] =>
 
     const actionsCell: ICell = {
       id: `cell-actions-${client.id}`,
-      element: <>// TODO: cell-activities</>,
+      element: <CellActivities client={client} />,
       className: styles.bodyCell__actions,
     };
 

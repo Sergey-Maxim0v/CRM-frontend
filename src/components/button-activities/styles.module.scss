@@ -1,0 +1,46 @@
+.button {
+  transition: color 0.2s;
+
+  &.update {
+    color: $c-black;
+
+    &:hover {
+      color: $c-violet;
+    }
+
+    &.load {
+      color: $c-violet;
+    }
+
+    &.load {
+      color: $c-violet;
+    }
+  }
+
+  &.delete {
+    color: $c-black;
+
+    &:hover {
+      color: $c-red;
+    }
+
+    &.load {
+      color: $c-red;
+    }
+  }
+}
+
+.icon {
+
+}
+
+.loader {
+
+  &.update {
+    color: $c-violet;
+  }
+
+  &.delete {
+    color: $c-red;
+  }
+}
