@@ -32,19 +32,21 @@ const ButtonActivities: FC<PropsWithChildren<IButtonActivities>> = ({
     >
       {isLoad ? (
         <Loader
-          className={
-            (styles.loader,
+          className={classNames(
+            styles.loader,
+            styles.icon,
             {
               [styles.update]: type === BUTTON_ACTIVITIES_ENUM.update,
             },
             {
               [styles.delete]: type === BUTTON_ACTIVITIES_ENUM.delete,
-            })
-          }
+            }
+          )}
         />
       ) : (
         Icon
       )}
+
       {children}
     </button>
   );

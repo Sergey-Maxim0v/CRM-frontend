@@ -31,11 +31,12 @@
 }
 
 .icon {
-
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
 }
 
 .loader {
-
   &.update {
     color: $c-violet;
   }
