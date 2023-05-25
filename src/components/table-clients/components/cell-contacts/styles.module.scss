@@ -6,3 +6,28 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
+
+.link {
+  margin: 4px;
+}
+
+.button {
+  margin: 4px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $c-white;
+  border: 2px solid $c-violet;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 1em;
+  color: $c-black;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: $c-violet-dark;
+  }
+}
