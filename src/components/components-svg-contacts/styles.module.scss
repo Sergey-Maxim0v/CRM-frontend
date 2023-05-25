@@ -1,0 +1,14 @@
+.ellipse {
+  background-color: currentColor;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  color: $c-white;
+}
