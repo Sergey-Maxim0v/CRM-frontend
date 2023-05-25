@@ -7,5 +7,5 @@ export interface ICellDate {
 
 export enum CELL_DATE_ENUM {
   create = "cell-create",
-  change = "cell-change",
+  update = "cell-update",
 }

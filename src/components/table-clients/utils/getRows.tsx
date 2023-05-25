@@ -30,7 +30,7 @@ const getRows = (data: IClient[]): IRow[] =>
 
     const updateCell: ICell = {
       id: `cell-update-${client.id}`,
-      element: <CellDate client={client} type={CELL_DATE_ENUM.create} />,
+      element: <CellDate client={client} type={CELL_DATE_ENUM.update} />,
       className: styles.bodyCell__update,
     };
 
