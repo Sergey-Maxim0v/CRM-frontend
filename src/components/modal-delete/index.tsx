@@ -4,19 +4,28 @@ import Modal from "../modal";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import ButtonCancel from "../button-cancel";
+import styles from "./styles.module.scss";
 
 const ModalDelete: FC<IModalDelete> = ({ onDeleteModal, closeModal }) => {
   return (
     <Modal closeModal={() => closeModal()}>
-      <h4>Удалить клиента</h4>
+      <div className={styles.row}>
+        <h4 className={styles.title}>Удалить клиента</h4>
 
-      <p>Вы действительно хотите удалить данного клиента?</p>
+        <p className={styles.description}>
+          Вы действительно хотите удалить данного клиента?
+        </p>
 
-      <Button type={BUTTON_TYPES.primary} onClick={() => onDeleteModal()}>
-        Удалить
-      </Button>
+        <Button
+          className={styles.button}
+          type={BUTTON_TYPES.primary}
+          onClick={() => onDeleteModal()}
+        >
+          Удалить
+        </Button>
 
-      <ButtonCancel onClick={() => closeModal()}>Отмена</ButtonCancel>
+        <ButtonCancel onClick={() => closeModal()}>Отмена</ButtonCancel>
+      </div>
     </Modal>
   );
 };
