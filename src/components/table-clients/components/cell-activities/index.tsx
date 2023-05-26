@@ -41,9 +41,8 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
       .then((res) => {
         res?.data &&
           setClientsData((prev) => {
-            const currentIndex = prev.indexOf(
-              prev?.find((el) => el.id === res.data.id)
-            );
+            const currentElement = prev.find((el) => el.id === res.data.id);
+            const currentIndex = currentElement && prev.indexOf(currentElement);
             const result: IClient[] = [];
 
             for (let i = 0; i < prev.length; i++) {
