@@ -9,7 +9,7 @@ function App() {
   const [filter, setFilter] = useState<string | undefined>(undefined);
   const [clientsData, setClientsData] = useState<IClient[]>([]);
 
-  const { refetch, isLoading, isError, data } = useGetContacts();
+  const { refetch, isLoading, data } = useGetContacts();
 
   const contextValue: IContext = {
     filter,
@@ -17,6 +17,7 @@ function App() {
     refetch,
     clientsData,
     isLoading,
+    setClientsData,
   };
 
   useEffect(() => setClientsData(data), [data]);

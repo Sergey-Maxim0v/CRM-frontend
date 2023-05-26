@@ -21,15 +21,13 @@ const initialContactData: IClient = {
 const Content = () => {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   const [clientData, setClientData] = useState<IClient>(initialContactData);
-  const { refetch } = useContext(Context);
+  const { setClientsData } = useContext(Context);
 
   const onSubmit = () => {
     saveNewClient(clientData)
-      .then((row) => {
-        console.log(row);
-        // TODO: add new row
-        return refetch();
-      })
+      .then(
+        (res) => res?.data && setClientsData((pref) => pref.concat(res.data))
+      )
       .catch((e) => console.log("error save new client:::", e))
       .finally(() => setIsOpenAddModal(false));
   };
