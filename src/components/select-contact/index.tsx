@@ -7,7 +7,7 @@ import { CONTACT_TYPES, IContact } from "../../api/types";
 const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
   const onChangeType = (type: CONTACT_TYPES) => {
     setClientData((pref) => {
-      const contacts = pref.contacts;
+      const contacts = pref.contacts ?? [];
       const currentIndex = contacts.indexOf(contact);
       const resultContacts = [];
 
@@ -29,7 +29,7 @@ const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
 
   const onChangeValue = (value: string) => {
     setClientData((pref) => {
-      const contacts = pref.contacts;
+      const contacts = pref.contacts ?? [];
       const currentIndex = contacts.indexOf(contact);
       const resultContacts = [];
 
@@ -51,7 +51,8 @@ const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
 
   const onDelete = () => {
     setClientData((pref) => {
-      const filteredContacts = pref.contacts.filter((el) => el !== contact);
+      const contacts = pref.contacts ?? [];
+      const filteredContacts = contacts.filter((el) => el !== contact);
 
       return {
         ...pref,

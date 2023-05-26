@@ -1,0 +1,32 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modalTitle {
+  margin-bottom: 32px;
+  display: flex;
+  align-items: flex-end;
+  padding-right: 52px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.input {
+  margin-bottom: 14px;
+}
+
+.contacts {
+  margin: 26px 0;
+}
+
+.buttonSend {
+  margin: 26px auto 6px;
+}
+
+.buttonClose {
+  margin-right: auto;
+  margin-left: auto;
+}
