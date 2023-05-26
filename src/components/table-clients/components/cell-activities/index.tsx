@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { ICellActivities } from "./types";
 import styles from "./styles.module.scss";
 import ButtonActivities from "../../../button-activities";
@@ -8,8 +8,10 @@ import deleteClient from "../../../../api/deleteClient";
 import ModalUpdateOrAdd from "../../../modal-update-or-add";
 import { IClient } from "../../../../api/types";
 import updateClient from "../../../../api/updateClient";
+import { Context } from "../../../../context/context";
 
 const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
+  const { setClientsData } = useContext(Context);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUpdateModal, setIsUpdateModal] = useState(false);
   const [isLoadUpdate, setIsLoadUpdate] = useState(false);
@@ -36,9 +38,24 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
     setIsUpdateModal(false);
 
     await updateClient(updatedClient)
-      .then((newRow) => {
-        console.log(newRow);
-        // TODO: update rows
+      .then((res) => {
+        res?.data &&
+          setClientsData((prev) => {
+            const currentIndex = prev.indexOf(
+              prev?.find((el) => el.id === res.data.id)
+            );
+            const result: IClient[] = [];
+
+            for (let i = 0; i < prev.length; i++) {
+              if (i !== currentIndex) {
+                result.push(prev[i]);
+              } else {
+                result.push(res.data);
+              }
+            }
+
+            return result;
+          });
       })
       .catch((error) => {
         console.error("error update client:::", error);
