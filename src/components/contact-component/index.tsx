@@ -6,6 +6,8 @@ import classNames from "classnames";
 
 const ContactComponent: FC<IContactComponent> = ({ contact, className }) => {
   const href = "/";
+  // TODO: href
+
   return (
     <a href={href} className={classNames(styles.link, className)}>
       <ComponentsSVGContacts type={contact.type} className={styles.icon} />
