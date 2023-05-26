@@ -5,10 +5,12 @@ import { IColumn, IRow } from "../table/types";
 import styles from "./styles.module.scss";
 import getColumns from "./utils/getColumns";
 import getRows from "./utils/getRows";
+import filterRowsByHeader from "./utils/filterRowsByHeader";
 
 const TableClients: FC = () => {
   const { filter, clientsData, isLoading } = useContext(Context);
   const [rows, setRows] = useState<IRow[]>([]);
+  const [filteredRows, setFilteredRows] = useState<IRow[]>([]);
 
   const columns: IColumn[] = useMemo(() => getColumns(), []);
 
@@ -20,12 +22,18 @@ const TableClients: FC = () => {
   }, [clientsData]);
 
   useEffect(() => {
-    // TODO: filter rows by header
-  }, [filter]);
+    if (filter) {
+      setFilteredRows(
+        rows.filter((row) => filterRowsByHeader({ row, filter }))
+      );
+    } else {
+      setFilteredRows(rows);
+    }
+  }, [filter, rows]);
 
   return (
     <Table
-      rows={rows}
+      rows={filteredRows}
       columns={columns}
       tableHeadStyle={styles.head}
       tableRowStyle={styles.row}

@@ -40,7 +40,7 @@ const Table: FC<ITable> = ({
         {isLoading && <Loader className={styles.loader} />}
 
         {!isLoading && !rows.length ? (
-          <div className={styles.noRowMessage}>Список клиентов пуст.</div>
+          <div className={styles.noRowMessage}>СКлиенты не найдены.</div>
         ) : (
           rows.map((row) => (
             <div

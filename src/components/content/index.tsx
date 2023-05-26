@@ -28,7 +28,7 @@ const Content = () => {
       .then(
         (res) => res?.data && setClientsData((pref) => pref.concat(res.data))
       )
-      .catch((e) => console.log("error save new client:::", e))
+      .catch((e) => console.warn("error save new client:::", e))
       .finally(() => setIsOpenAddModal(false));
   };
 
