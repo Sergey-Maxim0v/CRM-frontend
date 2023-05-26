@@ -52,7 +52,9 @@ const SelectContact: FC<ISelectContact> = ({ contact, setClientData }) => {
   const onDelete = () => {
     setClientData((pref) => {
       const contacts = pref.contacts ?? [];
-      const filteredContacts = contacts.filter((el) => el !== contact);
+      const filteredContacts = contacts.filter(
+        (el: IContact) => el !== contact
+      );
 
       return {
         ...pref,

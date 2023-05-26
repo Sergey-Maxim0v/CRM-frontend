@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, MouseEvent } from "react";
-import { IModalUpdate } from "./types";
+import { IModalUpdateOrAdd } from "./types";
 import Modal from "../modal";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
@@ -8,19 +8,25 @@ import Button from "../button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import ButtonCancel from "../button-cancel";
 
-const ModalUpdate: FC<IModalUpdate> = ({
-  updatedClient,
-  setUpdatedClient,
-  onUpdateClient,
+const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
+  client,
+  setClient,
+  onSubmit,
   closeModal,
 }) => {
-  const onChangeSurname = (event: ChangeEvent<HTMLInputElement>) => event;
-  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => event;
-  const onChangeLastName = (event: ChangeEvent<HTMLInputElement>) => event;
+  const onChangeSurname = (event: ChangeEvent<HTMLInputElement>) => {
+    setClient({ ...client, surname: event.target.value });
+  };
+
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) =>
+    setClient({ ...client, name: event.target.value });
+
+  const onChangeLastName = (event: ChangeEvent<HTMLInputElement>) =>
+    setClient({ ...client, lastName: event.target.value });
 
   const sendClientData = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    await onUpdateClient();
+    await onSubmit();
   };
 
   return (
@@ -29,7 +35,7 @@ const ModalUpdate: FC<IModalUpdate> = ({
         <h3 className={styles.modalTitle}>Новый клиент</h3>
 
         <InputModal
-          value={updatedClient.surname}
+          value={client.surname}
           onChange={onChangeSurname}
           placeholder={"Фамилия"}
           type="text"
@@ -38,7 +44,7 @@ const ModalUpdate: FC<IModalUpdate> = ({
         />
 
         <InputModal
-          value={updatedClient.name}
+          value={client.name}
           onChange={onChangeName}
           placeholder={"Имя"}
           type="text"
@@ -47,7 +53,7 @@ const ModalUpdate: FC<IModalUpdate> = ({
         />
 
         <InputModal
-          value={updatedClient.lastName ?? ""}
+          value={client.lastName ?? ""}
           onChange={onChangeLastName}
           placeholder={"Отчество"}
           type="text"
@@ -55,10 +61,7 @@ const ModalUpdate: FC<IModalUpdate> = ({
           required={false}
         />
 
-        <ModalContacts
-          clientData={updatedClient}
-          setClientData={setUpdatedClient}
-        />
+        <ModalContacts clientData={client} setClientData={setClient} />
 
         <Button
           type={BUTTON_TYPES.primary}
@@ -79,4 +82,4 @@ const ModalUpdate: FC<IModalUpdate> = ({
   );
 };
 
-export default ModalUpdate;
+export default ModalUpdateOrAdd;

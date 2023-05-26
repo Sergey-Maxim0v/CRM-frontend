@@ -5,7 +5,7 @@ import ButtonActivities from "../../../button-activities";
 import { BUTTON_ACTIVITIES_ENUM } from "../../../button-activities/types";
 import ModalDelete from "../../../modal-delete";
 import deleteClient from "../../../../api/deleteClient";
-import ModalUpdate from "../../../modal-update";
+import ModalUpdateOrAdd from "../../../modal-update-or-add";
 import { IClient } from "../../../../api/types";
 import updateClient from "../../../../api/updateClient";
 
@@ -77,10 +77,10 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
       )}
 
       {isUpdateModal && (
-        <ModalUpdate
-          onUpdateClient={() => onUpdateModal()}
-          setUpdatedClient={setUpdatedClient}
-          updatedClient={updatedClient}
+        <ModalUpdateOrAdd
+          onSubmit={() => onUpdateModal()}
+          setClient={setUpdatedClient}
+          client={updatedClient}
           closeModal={() => setIsUpdateModal(false)}
         />
       )}

@@ -1,13 +1,38 @@
 import PageTitle from "../page-title";
 import ButtonAdd from "../button-add";
 import stiles from "./styles.module.scss";
-import { useState } from "react";
-import Modal from "../modal";
-import ModalContentAdd from "../modal-content-add";
+import { useContext, useState } from "react";
 import TableClients from "../table-clients";
+import ModalUpdateOrAdd from "../modal-update-or-add";
+import { Context } from "../../context/context";
+import saveNewClient from "../../api/saveNewClient";
+import { IClient } from "../../api/types";
+
+const initialContactData: IClient = {
+  id: "",
+  updatedAt: "",
+  createdAt: "",
+  name: "",
+  surname: "",
+  lastName: "",
+  contacts: [],
+};
 
 const Content = () => {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
+  const [clientData, setClientData] = useState<IClient>(initialContactData);
+  const { refetch } = useContext(Context);
+
+  const onSubmit = () => {
+    saveNewClient(clientData)
+      .then((row) => {
+        console.log(row);
+        // TODO: add new row
+        return refetch();
+      })
+      .catch((e) => console.log("error save new client:::", e))
+      .finally(() => setIsOpenAddModal(false));
+  };
 
   return (
     <section className={stiles.row}>
@@ -16,9 +41,12 @@ const Content = () => {
       <ButtonAdd openModal={() => setIsOpenAddModal(true)} />
 
       {isOpenAddModal && (
-        <Modal closeModal={() => setIsOpenAddModal(false)}>
-          <ModalContentAdd closeModal={() => setIsOpenAddModal(false)} />
-        </Modal>
+        <ModalUpdateOrAdd
+          closeModal={() => setIsOpenAddModal(false)}
+          client={clientData}
+          setClient={setClientData}
+          onSubmit={onSubmit}
+        />
       )}
     </section>
   );

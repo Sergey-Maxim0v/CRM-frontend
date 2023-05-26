@@ -14,15 +14,7 @@ export interface IContact {
   value: string;
 }
 
-export interface INewClient
-  extends Omit<IClient, "id" | "createdAt" | "updatedAt" | "contacts"> {
-  contacts: IContact[];
-}
-
-export interface IServerErrorMessage {
-  field: string; // Название поля объекта, в котором произошла ошибка
-  message: string; // Сообщение об ошибке, которое можно показать пользователю
-}
+export type INewClient = Omit<IClient, "id" | "createdAt" | "updatedAt">;
 
 export enum CONTACT_TYPES {
   tel = "tel",

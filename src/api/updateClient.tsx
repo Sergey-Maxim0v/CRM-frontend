@@ -1,16 +1,10 @@
-import { IClient, INewClient } from "./types";
-import validateNewClient from "../utils/validateNewClient";
+import { IClient } from "./types";
+import getIsValidClient from "../utils/getIsValidClient";
 import axios from "axios";
 import { CONTACTS_UPDATE_URL } from "./api-url";
 
 const updateClient = async (client: IClient) => {
-  const clientForValidate: INewClient = {
-    name: client.name,
-    lastName: client.lastName,
-    surname: client.surname,
-    contacts: client.contacts ?? [],
-  };
-  const isValidClient = validateNewClient(clientForValidate);
+  const isValidClient = getIsValidClient(client);
 
   if (!isValidClient) {
     console.error("Client object no valid");
