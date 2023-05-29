@@ -6,17 +6,19 @@ import styles from "./styles.module.scss";
 import getColumns from "./utils/getColumns";
 import getRows from "./utils/getRows";
 import filterRowsByHeader from "./utils/filterRowsByHeader";
-import useGetContacts from "../../hooks/useGetContacts";
 
 const TableClients: FC = () => {
-  const { filter } = useContext(Context);
+  const {
+    filter,
+    isLoadingClients,
+    clientsData: data,
+    isError,
+  } = useContext(Context);
 
   const [rows, setRows] = useState<IRow[]>([]);
   const [filteredRows, setFilteredRows] = useState<IRow[]>();
   const [errorMessage, setErrorMessage] = useState("");
   const [noListMessage, setNoListMessage] = useState("");
-
-  const { isLoading, data, isError } = useGetContacts();
 
   const columns: IColumn[] = useMemo(() => getColumns(), []);
 
@@ -32,9 +34,15 @@ const TableClients: FC = () => {
       setFilteredRows(
         rows.filter((row) => filterRowsByHeader({ row, filter }))
       );
-    } else {
-      setFilteredRows(rows);
+      return;
     }
+
+    if (rows.length) {
+      setFilteredRows(rows);
+      return;
+    }
+
+    setFilteredRows(undefined);
   }, [filter, rows]);
 
   useEffect(() => {
@@ -59,7 +67,7 @@ const TableClients: FC = () => {
       tableRowStyle={styles.row}
       tableStyle={styles.table}
       tableBodyStyle={styles.body}
-      isLoading={isLoading}
+      isLoading={isLoadingClients}
       errorMessage={errorMessage}
       noListMessage={noListMessage}
     />
