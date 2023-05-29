@@ -1,14 +1,8 @@
-import { createContext, Dispatch, SetStateAction } from "react";
-import { IClient } from "../api/types";
+import { createContext } from "react";
 
 export interface IContext {
   filter: string | undefined;
   setFilter: (val: string | undefined) => void;
-  refetch: () => Promise<void>;
-  clientsData: IClient[];
-  setClientsData: Dispatch<SetStateAction<IClient[]>>;
-  isLoading: boolean;
-  isError: boolean;
 }
 
 export const Context = createContext<IContext>({
@@ -16,9 +10,4 @@ export const Context = createContext<IContext>({
   setFilter: () => {
     return;
   },
-  refetch: () => new Promise<void>(() => undefined),
-  clientsData: [],
-  isLoading: false,
-  setClientsData: () => [],
-  isError: false,
 });

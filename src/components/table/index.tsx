@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ITable } from "./types";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import Loader from "../loader";
+import TableBodyFilling from "./components/table-body-filling";
 
 const Table: FC<ITable> = ({
   columns,
@@ -12,7 +12,8 @@ const Table: FC<ITable> = ({
   tableHeadStyle,
   tableBodyStyle,
   isLoading,
-  isError,
+  errorMessage,
+  noListMessage,
 }) => {
   return (
     <div className={classNames(styles.table, tableStyle)}>
@@ -38,49 +39,14 @@ const Table: FC<ITable> = ({
       </div>
 
       <div className={classNames(styles.tableBody, tableBodyStyle)}>
-        {isLoading && <Loader className={styles.loader} />}
-
-        {!isLoading && !rows.length && !isError && (
-          <div className={styles.noRowMessage}>Клиенты не найдены.</div>
-        )}
-
-        {!isLoading && isError && (
-          <div className={styles.noRowMessage}>
-            Ошибка загрузки списка клиентов
-          </div>
-        )}
-
-        {!isLoading &&
-          !isError &&
-          rows.length &&
-          rows.map((row) => (
-            <div
-              key={`row-${row.id}`}
-              className={classNames(tableRowStyle, styles.tableRow)}
-            >
-              {columns.map((column) => (
-                <div
-                  key={`${row.cells[column.rowKey].id}-${column.rowKey}`}
-                  className={classNames(
-                    column.cellStyle,
-                    row.cells[column.rowKey].className,
-                    styles.tableRowCell
-                  )}
-                  style={
-                    column.width
-                      ? {
-                          width: `${column.width}px`,
-                          minWidth: `${column.width}px`,
-                          maxWidth: `${column.width}px`,
-                        }
-                      : {}
-                  }
-                >
-                  {row.cells[column.rowKey]?.element}
-                </div>
-              ))}
-            </div>
-          ))}
+        <TableBodyFilling
+          rows={rows}
+          columns={columns}
+          isLoading={isLoading}
+          tableRowStyle={tableRowStyle}
+          errorMessage={errorMessage}
+          noListMessage={noListMessage}
+        />
       </div>
     </div>
   );
