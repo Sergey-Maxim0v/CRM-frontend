@@ -12,6 +12,7 @@ const Table: FC<ITable> = ({
   tableHeadStyle,
   tableBodyStyle,
   isLoading,
+  isError,
 }) => {
   return (
     <div className={classNames(styles.table, tableStyle)}>
@@ -39,9 +40,19 @@ const Table: FC<ITable> = ({
       <div className={classNames(styles.tableBody, tableBodyStyle)}>
         {isLoading && <Loader className={styles.loader} />}
 
-        {!isLoading && !rows.length ? (
-          <div className={styles.noRowMessage}>СКлиенты не найдены.</div>
-        ) : (
+        {!isLoading && !rows.length && !isError && (
+          <div className={styles.noRowMessage}>Клиенты не найдены.</div>
+        )}
+
+        {!isLoading && isError && (
+          <div className={styles.noRowMessage}>
+            Ошибка загрузки списка клиентов
+          </div>
+        )}
+
+        {!isLoading &&
+          !isError &&
+          rows.length &&
           rows.map((row) => (
             <div
               key={`row-${row.id}`}
@@ -69,8 +80,7 @@ const Table: FC<ITable> = ({
                 </div>
               ))}
             </div>
-          ))
-        )}
+          ))}
       </div>
     </div>
   );

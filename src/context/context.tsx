@@ -8,6 +8,7 @@ export interface IContext {
   clientsData: IClient[];
   setClientsData: Dispatch<SetStateAction<IClient[]>>;
   isLoading: boolean;
+  isError: boolean;
 }
 
 export const Context = createContext<IContext>({
@@ -19,4 +20,5 @@ export const Context = createContext<IContext>({
   clientsData: [],
   isLoading: false,
   setClientsData: () => [],
+  isError: false,
 });

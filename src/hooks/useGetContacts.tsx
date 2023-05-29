@@ -3,7 +3,7 @@ import getContacts from "../api/getContacts";
 import { IClient } from "../api/types";
 
 const useGetContacts = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<IClient[]>([]);
   const [cancel, setCancel] = useState<() => void>();
@@ -23,6 +23,7 @@ const useGetContacts = () => {
       })
       .catch((error) => {
         setIsError(true);
+        setIsLoading(false);
         console.error("ERROR GET CONTACTS:::", error);
       });
   };

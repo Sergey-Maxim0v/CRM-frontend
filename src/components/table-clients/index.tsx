@@ -8,7 +8,7 @@ import getRows from "./utils/getRows";
 import filterRowsByHeader from "./utils/filterRowsByHeader";
 
 const TableClients: FC = () => {
-  const { filter, clientsData, isLoading } = useContext(Context);
+  const { filter, clientsData, isLoading, isError } = useContext(Context);
   const [rows, setRows] = useState<IRow[]>([]);
   const [filteredRows, setFilteredRows] = useState<IRow[]>([]);
 
@@ -40,6 +40,7 @@ const TableClients: FC = () => {
       tableStyle={styles.table}
       tableBodyStyle={styles.body}
       isLoading={isLoading}
+      isError={isError}
     />
   );
 };

@@ -10,6 +10,7 @@ export interface ITable {
   tableRowStyle?: string;
   tableBodyStyle?: string;
   isLoading: boolean;
+  isError?: boolean;
 }
 
 export interface IColumn {
