@@ -31,6 +31,10 @@ const SelectContact: FC<ISelectContact> = ({
   setContact,
   onDelete,
 }) => {
+  const currentOption = SELECT_CONTACT_OPTIONS.find(
+    (option: ISelectTypeOption) => option.value === contact.type
+  );
+
   const onChangeType = (type: CONTACT_TYPES) => {
     const updatedContact = { ...contact, type };
     setContact(updatedContact);
@@ -41,18 +45,14 @@ const SelectContact: FC<ISelectContact> = ({
     setContact(updatedContact);
   };
 
-  const currentOption = SELECT_CONTACT_OPTIONS.find(
-    (option: ISelectTypeOption) => option.value === contact.type
-  );
-
   return (
     <div className={styles.container}>
       <div className={styles.body}>
         <Select
-          onChange={(option) => onChangeType(option?.value as CONTACT_TYPES)}
+          value={currentOption}
+          onChange={(option) => onChangeType(option.value as CONTACT_TYPES)}
           options={SELECT_CONTACT_OPTIONS}
           className={styles.select}
-          value={currentOption}
         />
 
         <input

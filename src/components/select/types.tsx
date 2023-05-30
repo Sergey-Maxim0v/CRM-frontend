@@ -1,5 +1,5 @@
 export interface ISelect {
-  onChange: (val: ISelectTypeOption | undefined) => void;
+  onChange: (val: ISelectTypeOption) => void;
   options: ISelectTypeOption[];
   value: ISelectTypeOption | undefined;
   className?: string;

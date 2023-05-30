@@ -28,3 +28,25 @@
   color: $c-violet;
   transition: transform 0.2s;
 }
+
+.selectOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: $c-gray-select-light;
+  border: 1px solid $c-gray-bg;
+}
+
+.selectOption {
+  padding: 4px 12px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: $c-black;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $c-gray-select;
+  }
+}
