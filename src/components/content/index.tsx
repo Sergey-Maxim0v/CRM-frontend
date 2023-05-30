@@ -26,7 +26,7 @@ const Content = () => {
   const onSubmit = () => {
     saveNewClient(clientData)
       .then(
-        (res) => res?.data && setClientsData((pref) => pref.concat(res.data))
+        (res) => res?.data && setClientsData((prev) => prev.concat(res.data))
       )
       .catch((e) => console.warn("error save new client:::", e))
       .finally(() => setIsOpenAddModal(false));

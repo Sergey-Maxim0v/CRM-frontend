@@ -23,7 +23,7 @@ const TableClients: FC = () => {
   const columns: IColumn[] = useMemo(() => getColumns(), []);
 
   const filterRows = (id: string) =>
-    setRows((pref) => pref.filter((row) => row.client.id !== id));
+    setRows((prev) => prev.filter((row) => row.client.id !== id));
 
   useEffect(() => {
     setRows(getRows({ data, filterRows }));

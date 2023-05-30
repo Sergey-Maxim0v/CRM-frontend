@@ -28,8 +28,8 @@ const ModalContacts: FC<IModalContacts> = ({
   };
 
   const setContact = (index: number, updatedContact: IContact) => {
-    setClientData((pref) => {
-      const contacts = pref.contacts ?? [];
+    setClientData((prev) => {
+      const contacts = prev.contacts ?? [];
       const resultContacts = [];
 
       for (let i = 0; i < contacts.length; i++) {
@@ -41,21 +41,21 @@ const ModalContacts: FC<IModalContacts> = ({
       }
 
       return {
-        ...pref,
+        ...prev,
         contacts: resultContacts,
       };
     });
   };
 
   const onDeleteContact = (contact: IContact) => {
-    setClientData((pref) => {
-      const contacts = pref.contacts ?? [];
+    setClientData((prev) => {
+      const contacts = prev.contacts ?? [];
       const filteredContacts = contacts.filter(
         (el: IContact) => el !== contact
       );
 
       return {
-        ...pref,
+        ...prev,
         contacts: filteredContacts,
       };
     });
