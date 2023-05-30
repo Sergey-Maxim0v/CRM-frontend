@@ -27,13 +27,48 @@ const ModalContacts: FC<IModalContacts> = ({
     });
   };
 
+  const setContact = (index: number, updatedContact: IContact) => {
+    setClientData((pref) => {
+      const contacts = pref.contacts ?? [];
+      const resultContacts = [];
+
+      for (let i = 0; i < contacts.length; i++) {
+        if (i === index) {
+          resultContacts.push(updatedContact);
+        } else {
+          resultContacts.push(contacts[i]);
+        }
+      }
+
+      return {
+        ...pref,
+        contacts: resultContacts,
+      };
+    });
+  };
+
+  const onDeleteContact = (contact: IContact) => {
+    setClientData((pref) => {
+      const contacts = pref.contacts ?? [];
+      const filteredContacts = contacts.filter(
+        (el: IContact) => el !== contact
+      );
+
+      return {
+        ...pref,
+        contacts: filteredContacts,
+      };
+    });
+  };
+
   return (
     <div className={classNames(styles.row, className)}>
       {clientData.contacts?.map((contact, index) => (
         <SelectContact
           key={index}
           contact={contact}
-          setClientData={setClientData}
+          setContact={(updatedContact) => setContact(index, updatedContact)}
+          onDelete={() => onDeleteContact(contact)}
         />
       ))}
 

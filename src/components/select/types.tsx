@@ -1,10 +1,11 @@
-import { CONTACT_TYPES } from "../../api/types";
-
 export interface ISelect {
-  type: CONTACT_TYPES;
-  onChangeType: (val: CONTACT_TYPES) => void;
-  value: string;
-  onChangeValue: (val: string) => void;
+  onChange: (val: ISelectTypeOption | undefined) => void;
+  options: ISelectTypeOption[];
+  value: ISelectTypeOption | undefined;
   className?: string;
-  onDelete: () => void;
+}
+
+export interface ISelectTypeOption {
+  label: string;
+  value: string;
 }
