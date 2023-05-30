@@ -16,7 +16,8 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
         className
       )}
       onClick={() => setIsOpen((prev) => !prev)}
-      onBlur={() => setIsOpen(false)} // TODO: не работает
+      tabIndex={0} // for onBlur
+      onBlur={() => setIsOpen(false)}
     >
       <span className={styles.selectText}>
         {value ? value.label : "Выберете"}

@@ -30,6 +30,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  user-select: none;
 }
 
 .selectIcon {
@@ -64,6 +65,7 @@
   color: $c-black;
   cursor: pointer;
   transition: background-color 0.2s;
+  user-select: none;
 
   &:hover, &.selected {
     background-color: $c-gray-select;
