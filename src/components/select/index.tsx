@@ -42,10 +42,15 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
         case "ArrowDown":
           if (!isOpen) {
             setIsOpen(true);
+          } else {
+            // TODO: focus option
           }
           break;
 
         case "ArrowUp":
+          if (isOpen) {
+            // TODO: focus option
+          }
           break;
       }
     };
