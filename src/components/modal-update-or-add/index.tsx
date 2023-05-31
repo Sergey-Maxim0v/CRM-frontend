@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, MouseEvent } from "react";
+import { ChangeEvent, FC, MouseEvent, useEffect, useRef } from "react";
 import { IModalUpdateOrAdd } from "./types";
 import Modal from "../modal";
 import styles from "./styles.module.scss";
@@ -14,6 +14,10 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
   onSubmit,
   closeModal,
 }) => {
+  // eslint-disable-next-line
+  // @ts-ignore
+  const firstInputRef = useRef<HTMLInputElement>(null);
+
   const onChangeSurname = (event: ChangeEvent<HTMLInputElement>) => {
     setClient({ ...client, surname: event.target.value });
   };
@@ -29,12 +33,17 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
     await onSubmit();
   };
 
+  useEffect(() => {
+    firstInputRef.current?.focus();
+  }, []);
+
   return (
     <Modal closeModal={closeModal}>
       <form className={styles.row}>
         <h3 className={styles.modalTitle}>Новый клиент</h3>
 
         <InputModal
+          ref={firstInputRef}
           value={client.surname}
           onChange={onChangeSurname}
           placeholder={"Фамилия"}
