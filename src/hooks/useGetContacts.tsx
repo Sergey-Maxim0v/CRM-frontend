@@ -8,6 +8,8 @@ const useGetContacts = () => {
   const [data, setData] = useState<IClient[]>([]);
   const [cancel, setCancel] = useState<() => void>();
 
+  // TODO: разделить refetch и первую загрузку
+
   const refetch = async () => {
     setIsLoading(true);
 
