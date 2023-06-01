@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, MouseEvent, useEffect, useRef } from "react";
-import { IModalUpdateOrAdd } from "./types";
+import { IModalUpdateOrAdd, MODAL_UPDATE_OR_ADD_TYPE } from "./types";
 import Modal from "../modal";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
@@ -13,6 +13,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
   setClient,
   onSubmit,
   closeModal,
+  type,
 }) => {
   // eslint-disable-next-line
   // @ts-ignore
@@ -37,10 +38,29 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
     firstInputRef.current?.focus();
   }, []);
 
+  const getModalTitle = () => {
+    switch (type) {
+      case MODAL_UPDATE_OR_ADD_TYPE.add:
+        return "Новый клиент";
+
+      case MODAL_UPDATE_OR_ADD_TYPE.update:
+        return "Изменить данные";
+
+      default:
+        return "";
+    }
+  };
+
   return (
     <Modal closeModal={closeModal}>
       <form className={styles.row}>
-        <h3 className={styles.modalTitle}>Новый клиент</h3>
+        <div className={styles.modalHead}>
+          <h3 className={styles.modalTitle}>{getModalTitle()}</h3>
+
+          {type === MODAL_UPDATE_OR_ADD_TYPE.update && (
+            <div className={styles.modalId}>ID: {client.id}</div>
+          )}
+        </div>
 
         <InputModal
           ref={firstInputRef}

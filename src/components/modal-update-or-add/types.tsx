@@ -6,4 +6,10 @@ export interface IModalUpdateOrAdd {
   setClient: Dispatch<SetStateAction<IClient>>;
   onSubmit: () => void;
   closeModal: () => void;
+  type: MODAL_UPDATE_OR_ADD_TYPE;
+}
+
+export enum MODAL_UPDATE_OR_ADD_TYPE {
+  add = "modal-add",
+  update = "modal-update",
 }

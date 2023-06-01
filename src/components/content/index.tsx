@@ -7,6 +7,7 @@ import ModalUpdateOrAdd from "../modal-update-or-add";
 import { Context } from "../../context/context";
 import saveNewClient from "../../api/saveNewClient";
 import { IClient } from "../../api/types";
+import { MODAL_UPDATE_OR_ADD_TYPE } from "../modal-update-or-add/types";
 
 const initialContactData: IClient = {
   id: "",
@@ -44,6 +45,7 @@ const Content = () => {
           client={clientData}
           setClient={setClientData}
           onSubmit={onSubmit}
+          type={MODAL_UPDATE_OR_ADD_TYPE.add}
         />
       )}
     </section>

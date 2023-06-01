@@ -4,14 +4,28 @@
   align-items: flex-start;
 }
 
-.modalTitle {
+.modalHead {
   margin-bottom: 32px;
   display: flex;
   align-items: flex-end;
-  padding-right: 52px;
+  justify-content: flex-start;
+}
+
+.modalTitle {
+  display: flex;
+  align-items: flex-end;
+  padding-right: 8px;
   font-weight: 700;
   font-size: 18px;
-  line-height: 25px;
+  line-height: 1em;
+}
+
+.modalId {
+  padding-right: 52px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1em;
+  color: #B0B0B0;
 }
 
 .input {

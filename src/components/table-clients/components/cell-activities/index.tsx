@@ -9,6 +9,7 @@ import ModalUpdateOrAdd from "../../../modal-update-or-add";
 import { IClient } from "../../../../api/types";
 import updateClient from "../../../../api/updateClient";
 import { Context } from "../../../../context/context";
+import { MODAL_UPDATE_OR_ADD_TYPE } from "../../../modal-update-or-add/types";
 
 const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
   const { setClientsData } = useContext(Context);
@@ -98,6 +99,7 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
           setClient={setUpdatedClient}
           client={updatedClient}
           closeModal={() => setIsUpdateModal(false)}
+          type={MODAL_UPDATE_OR_ADD_TYPE.update}
         />
       )}
     </div>
