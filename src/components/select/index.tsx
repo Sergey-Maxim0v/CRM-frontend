@@ -6,11 +6,38 @@ import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
 
 const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
+  const selectedOption = options.find(
+    (option) => option.value === value?.value
+  );
+  const initialIndexSelected = selectedOption
+    ? options.indexOf(selectedOption)
+    : 0;
+
   const [isOpen, setIsOpen] = useState(false);
+  const [indexSelected, setIndexSelected] =
+    useState<number>(initialIndexSelected);
 
   // eslint-disable-next-line
   // @ts-ignore
   const containerRef = useRef<HTMLDivElement>(null); // Argument type null is not assignable to parameter type HTMLDivElement
+
+  const incrementIndexState = () => {
+    setIndexSelected((prev) => {
+      if (prev === options.length - 1) {
+        return prev;
+      }
+      return ++prev;
+    });
+  };
+
+  const subtractIndexState = () => {
+    setIndexSelected((prev) => {
+      if (prev === 0) {
+        return 0;
+      }
+      return --prev;
+    });
+  };
 
   useEffect(() => {
     const current = containerRef.current;
@@ -30,12 +57,17 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
           break;
 
         case "Escape":
-          setIsOpen(false);
+          if (isOpen) {
+            setIsOpen(false);
+            setIndexSelected(initialIndexSelected);
+          }
           break;
 
         case "Enter":
           if (!isOpen) {
             setIsOpen(true);
+          } else {
+            onChange(options[indexSelected]);
           }
           break;
 
@@ -43,13 +75,13 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
           if (!isOpen) {
             setIsOpen(true);
           } else {
-            // TODO: focus option
+            incrementIndexState();
           }
           break;
 
         case "ArrowUp":
           if (isOpen) {
-            // TODO: focus option
+            subtractIndexState();
           }
           break;
       }
@@ -57,8 +89,13 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
 
     current?.addEventListener("keyup", handler);
 
-    return () => current?.removeEventListener("keyup", handler);
-  }, [isOpen]);
+    return () => {
+      // setIndexSelected(initialIndexSelected);
+      current?.removeEventListener("keyup", handler);
+    };
+
+    // eslint-disable-next-line
+  }, [isOpen, options, incrementIndexState]);
 
   return (
     <div
@@ -83,7 +120,7 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
           <li
             key={option.value}
             className={classNames(styles.selectOption, {
-              [styles.selected]: option.value === value?.value,
+              [styles.selected]: options.indexOf(option) === indexSelected,
             })}
             onClick={() => onChange(option)}
           >
