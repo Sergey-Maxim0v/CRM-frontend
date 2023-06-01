@@ -6,7 +6,11 @@ import { BUTTON_TYPES } from "../../enums/button-types";
 import ButtonCancel from "../button-cancel";
 import styles from "./styles.module.scss";
 
-const ModalDelete: FC<IModalDelete> = ({ onDeleteModal, closeModal }) => {
+const ModalDelete: FC<IModalDelete> = ({
+  onDeleteModal,
+  closeModal,
+  isLoad,
+}) => {
   return (
     <Modal closeModal={() => closeModal()}>
       <div className={styles.row}>
@@ -20,6 +24,7 @@ const ModalDelete: FC<IModalDelete> = ({ onDeleteModal, closeModal }) => {
           className={styles.button}
           type={BUTTON_TYPES.primary}
           onClick={() => onDeleteModal()}
+          loader={isLoad}
         >
           Удалить
         </Button>

@@ -12,7 +12,7 @@ import { Context } from "../../../../context/context";
 import { MODAL_UPDATE_OR_ADD_TYPE } from "../../../modal-update-or-add/types";
 
 const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
-  const { setClientsData } = useContext(Context);
+  const { setClientsData, refetch } = useContext(Context);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUpdateModal, setIsUpdateModal] = useState(false);
   const [isLoadUpdate, setIsLoadUpdate] = useState(false);
@@ -21,16 +21,18 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
 
   const onDeleteModal = async () => {
     setIsLoadDelete(true);
-    setIsDeleteModal(false);
+
     deleteClient(client)
       .then(() => {
-        setIsLoadDelete(false);
         filterRows(client.id);
       })
       .catch((error) => {
         console.error("error delete client:::", error);
+      })
+      .finally(() => {
         setIsLoadDelete(false);
         setIsDeleteModal(false);
+        refetch();
       });
   };
 
@@ -62,6 +64,7 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
       .finally(() => {
         setIsLoadUpdate(false);
         setIsUpdateModal(false);
+        refetch();
       });
     return;
   };
@@ -90,6 +93,7 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
         <ModalDelete
           onDeleteModal={onDeleteModal}
           closeModal={() => setIsDeleteModal(false)}
+          isLoad={isLoadDelete}
         />
       )}
 
