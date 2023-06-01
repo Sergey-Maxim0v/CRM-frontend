@@ -90,7 +90,6 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
     current?.addEventListener("keyup", handler);
 
     return () => {
-      // setIndexSelected(initialIndexSelected);
       current?.removeEventListener("keyup", handler);
     };
 
