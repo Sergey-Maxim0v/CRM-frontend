@@ -2,6 +2,7 @@
   height: 44px;
   width: auto;
   padding: 10px 36px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,5 +17,16 @@
       background-color: $c-violet-light;
     }
   }
+}
+
+.loader {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  min-width: 16px;
+  color: $c-white;
 }
 

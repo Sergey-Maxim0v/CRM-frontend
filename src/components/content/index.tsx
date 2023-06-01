@@ -23,14 +23,20 @@ const Content = () => {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   const [clientData, setClientData] = useState<IClient>(initialContactData);
   const { setClientsData } = useContext(Context);
+  const [isLoadSaveClient, setIsLoadSaveClient] = useState(false);
 
   const onSubmit = () => {
+    setIsLoadSaveClient(true);
     saveNewClient(clientData)
-      .then(
-        (res) => res?.data && setClientsData((prev) => prev.concat(res.data))
-      )
+      .then((res) => {
+        setClientData(initialContactData);
+        res?.data && setClientsData((prev) => prev.concat(res.data));
+      })
       .catch((e) => console.warn("error save new client:::", e))
-      .finally(() => setIsOpenAddModal(false));
+      .finally(() => {
+        setIsLoadSaveClient(false);
+        setIsOpenAddModal(false);
+      });
   };
 
   return (
@@ -46,6 +52,7 @@ const Content = () => {
           setClient={setClientData}
           onSubmit={onSubmit}
           type={MODAL_UPDATE_OR_ADD_TYPE.add}
+          isLoad={isLoadSaveClient}
         />
       )}
     </section>

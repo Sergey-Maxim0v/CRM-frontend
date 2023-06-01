@@ -36,7 +36,6 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
 
   const onUpdateModal = async () => {
     setIsLoadUpdate(true);
-    setIsUpdateModal(false);
 
     await updateClient(updatedClient)
       .then((res) => {
@@ -62,6 +61,7 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
       })
       .finally(() => {
         setIsLoadUpdate(false);
+        setIsUpdateModal(false);
       });
     return;
   };
@@ -100,6 +100,7 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
           client={updatedClient}
           closeModal={() => setIsUpdateModal(false)}
           type={MODAL_UPDATE_OR_ADD_TYPE.update}
+          isLoad={isLoadUpdate}
         />
       )}
     </div>

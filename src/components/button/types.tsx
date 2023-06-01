@@ -5,4 +5,5 @@ export interface IButton {
   type: BUTTON_TYPES;
   onClick?: (val: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  loader?: boolean;
 }

@@ -14,6 +14,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
   onSubmit,
   closeModal,
   type,
+  isLoad,
 }) => {
   // eslint-disable-next-line
   // @ts-ignore
@@ -96,6 +97,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           type={BUTTON_TYPES.primary}
           onClick={sendClientData}
           className={styles.buttonSend}
+          loader={isLoad}
         >
           Сохранить
         </Button>
