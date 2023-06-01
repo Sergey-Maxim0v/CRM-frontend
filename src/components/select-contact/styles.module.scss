@@ -15,6 +15,11 @@
 .select {
   width: 130px;
   height: 100%;
+  transition: border-color 0.2s;
+
+  &:focus{
+    border-color: $c-violet;
+  }
 }
 
 .input {
@@ -23,18 +28,25 @@
   height: 100%;
   background-color: $c-white;
   border: 1px solid $c-gray-light;
-  border-left: none;
-  border-right: none;
+  border-right-color: transparent;
+  border-left-color: transparent;
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
   color: $c-black;
+  transition: border-color 0.2s;
 
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
     color: $c-gray-placeholder;
+  }
+
+  &:focus{
+    border-color: $c-violet;
+    border-right-color: $c-violet;
+    border-left-color: $c-violet;
   }
 }
 
@@ -50,7 +62,7 @@
   border: 1px solid $c-gray-light;
   transition: color 0.2s, border-color 0.2s;
 
-  &:hover {
+  &:hover, &:focus {
     border-color: $c-red;
     color: $c-red;
   }

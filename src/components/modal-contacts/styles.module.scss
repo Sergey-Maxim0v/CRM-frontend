@@ -20,7 +20,7 @@
     margin-top: 26px;
   }
 
-  &:hover {
+  &:hover, &:focus {
     & .buttonText {
       color: $c-violet;
     }

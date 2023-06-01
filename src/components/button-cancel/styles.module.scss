@@ -7,7 +7,7 @@
   color: $c-black;
   transition: color 0.2s;
 
-  &:hover {
+  &:hover, &:focus {
     color: $c-violet-dark;
   }
 }
