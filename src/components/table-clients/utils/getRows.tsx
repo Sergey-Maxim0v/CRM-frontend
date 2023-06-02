@@ -11,10 +11,10 @@ import CellActivities from "../components/cell-activities";
 
 export interface IGetRows {
   data: IClient[];
-  filterRows: (val: string) => void;
+  filterRowsOnDelete: (val: string) => void;
 }
 
-const getRows = ({ data, filterRows }: IGetRows): IRow[] =>
+const getRows = ({ data, filterRowsOnDelete }: IGetRows): IRow[] =>
   data.reduce((result: IRow[], client) => {
     const idCell: ICell = {
       id: `cell-id-${client.id}`,
@@ -48,7 +48,12 @@ const getRows = ({ data, filterRows }: IGetRows): IRow[] =>
 
     const actionsCell: ICell = {
       id: `cell-actions-${client.id}`,
-      element: <CellActivities client={client} filterRows={filterRows} />,
+      element: (
+        <CellActivities
+          client={client}
+          filterRowsOnDelete={filterRowsOnDelete}
+        />
+      ),
       className: styles.bodyCell__actions,
     };
 

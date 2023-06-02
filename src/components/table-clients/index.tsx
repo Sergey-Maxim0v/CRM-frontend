@@ -1,13 +1,13 @@
-import { FC, useContext, useEffect, useMemo, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { Context } from "../../context/context";
 import Table from "../table";
-import { IColumn, IRow } from "../table/types";
+import { IRow } from "../table/types";
 import styles from "./styles.module.scss";
-import getColumns, { IIGetColumn } from "./utils/getColumns";
 import getRows from "./utils/getRows";
 import filterRowsByHeader from "./utils/filterRowsByHeader";
 import { ISort, SORT_ENUM } from "./types";
 import useGetColumns from "../../hooks/useGetColumns";
+import getSortedRows from "./utils/getSortedRows";
 
 const TableClients: FC = () => {
   const {
@@ -28,28 +28,34 @@ const TableClients: FC = () => {
 
   const { columns } = useGetColumns({ sortedBy, setSortedBy });
 
-  const filterRows = (id: string) =>
-    setRows((prev) => prev.filter((row) => row.client.id !== id));
-
   useEffect(() => {
-    setRows(getRows({ data, filterRows }));
+    const filterRowsOnDelete = (id: string) =>
+      setRows((prev) => prev.filter((row) => row.client.id !== id));
+
+    setRows(getRows({ data, filterRowsOnDelete: filterRowsOnDelete }));
   }, [data]);
 
   useEffect(() => {
     if (filter && rows.length) {
-      setFilteredRows(
-        rows.filter((row) => filterRowsByHeader({ row, filter }))
+      const rowsForSort = rows.filter((row) =>
+        filterRowsByHeader({ row, filter })
       );
+
+      const sortedRows = getSortedRows({ rows: rowsForSort, sortedBy });
+
+      setFilteredRows(sortedRows);
       return;
     }
 
     if (rows.length) {
-      setFilteredRows(rows);
+      const sortedRows = getSortedRows({ rows, sortedBy });
+
+      setFilteredRows(sortedRows);
       return;
     }
 
     setFilteredRows(undefined);
-  }, [filter, rows]);
+  }, [filter, rows, sortedBy]);
 
   useEffect(() => {
     if (filteredRows && !filteredRows.length) {
@@ -57,9 +63,7 @@ const TableClients: FC = () => {
     } else {
       setNoListMessage("");
     }
-
-    // TODO: sort effect
-  }, [filteredRows, sortedBy]);
+  }, [filteredRows]);
 
   useEffect(() => {
     if (isError) {

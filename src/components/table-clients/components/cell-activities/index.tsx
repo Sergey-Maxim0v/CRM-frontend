@@ -11,7 +11,10 @@ import updateClient from "../../../../api/updateClient";
 import { Context } from "../../../../context/context";
 import { MODAL_UPDATE_OR_ADD_TYPE } from "../../../modal-update-or-add/types";
 
-const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
+const CellActivities: FC<ICellActivities> = ({
+  client,
+  filterRowsOnDelete,
+}) => {
   const { setClientsData, refetch } = useContext(Context);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUpdateModal, setIsUpdateModal] = useState(false);
@@ -24,7 +27,7 @@ const CellActivities: FC<ICellActivities> = ({ client, filterRows }) => {
 
     deleteClient(client)
       .then(() => {
-        filterRows(client.id);
+        filterRowsOnDelete(client.id);
       })
       .catch((error) => {
         console.error("error delete client:::", error);
