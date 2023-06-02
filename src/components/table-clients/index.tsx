@@ -7,6 +7,7 @@ import getColumns, { IIGetColumn } from "./utils/getColumns";
 import getRows from "./utils/getRows";
 import filterRowsByHeader from "./utils/filterRowsByHeader";
 import { ISort, SORT_ENUM } from "./types";
+import useGetColumns from "../../hooks/useGetColumns";
 
 const TableClients: FC = () => {
   const {
@@ -25,28 +26,7 @@ const TableClients: FC = () => {
     direction: true,
   });
 
-  console.log(sortedBy);
-
-  const onSort = (type: SORT_ENUM) => {
-    if (sortedBy.type === type) {
-      setSortedBy((prev) => ({ ...prev, direction: !prev.direction }));
-    } else {
-      setSortedBy({ type, direction: true });
-    }
-  };
-
-  const columnsProps: IIGetColumn = {
-    sortedBy,
-    sortById: () => onSort(SORT_ENUM.id),
-    sortByName: () => onSort(SORT_ENUM.name),
-    sortByCreate: () => onSort(SORT_ENUM.create),
-    sortByUpdate: () => onSort(SORT_ENUM.update),
-  };
-
-  const columns: IColumn[] = useMemo(
-    () => getColumns(columnsProps),
-    [sortedBy]
-  );
+  const { columns } = useGetColumns({ sortedBy, setSortedBy });
 
   const filterRows = (id: string) =>
     setRows((prev) => prev.filter((row) => row.client.id !== id));
