@@ -1,5 +1,6 @@
 import { IRow } from "../../table/types";
 import { Dispatch, SetStateAction } from "react";
+import sortStringCallback from "../../../utils/sortStringCallback";
 
 const sortByName = ({
   direction,
@@ -14,10 +15,14 @@ const sortByName = ({
     `${row.client.surname}${row.client.name}${row.client.lastName ?? ""}`;
 
   if (direction) {
-    const sortedRows = rows.sort((row1, row2) => getName(row1) - getName(row2));
+    const sortedRows = rows.sort((row1, row2) =>
+      sortStringCallback(getName(row1), getName(row2))
+    );
     setRows(sortedRows);
   } else {
-    const sortedRows = rows.sort((row1, row2) => getName(row2) - getName(row1));
+    const sortedRows = rows.sort((row1, row2) =>
+      sortStringCallback(getName(row2), getName(row1))
+    );
     setRows(sortedRows);
   }
 };
