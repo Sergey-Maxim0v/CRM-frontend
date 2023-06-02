@@ -31,25 +31,24 @@ const TableClients: FC = () => {
   useEffect(() => {
     const filterRowsOnDelete = (id: string) =>
       setRows((prev) => prev.filter((row) => row.client.id !== id));
-
     setRows(getRows({ data, filterRowsOnDelete: filterRowsOnDelete }));
   }, [data]);
 
   useEffect(() => {
+    // TODO: при первом клике на заголовок и по дефолту не строки сортируются
+
+    const sortedRows = getSortedRows({ rows, sortedBy });
+
     if (filter && rows.length) {
-      const rowsForSort = rows.filter((row) =>
+      const rowsForRender = sortedRows.filter((row) =>
         filterRowsByHeader({ row, filter })
       );
 
-      const sortedRows = getSortedRows({ rows: rowsForSort, sortedBy });
-
-      setFilteredRows(sortedRows);
+      setFilteredRows(rowsForRender);
       return;
     }
 
     if (rows.length) {
-      const sortedRows = getSortedRows({ rows, sortedBy });
-
       setFilteredRows(sortedRows);
       return;
     }
@@ -68,6 +67,8 @@ const TableClients: FC = () => {
   useEffect(() => {
     if (isError) {
       setErrorMessage("Ошибка загрузки списка клиентов");
+    } else {
+      setErrorMessage("");
     }
   }, [isError]);
 
