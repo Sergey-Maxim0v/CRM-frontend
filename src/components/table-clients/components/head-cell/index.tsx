@@ -8,13 +8,13 @@ import getHeadCellText from "../../utils/getHeadCellText";
 
 const HeadCell: FC<IHeadCell> = ({ sorted, type, arrow }) => {
   return (
-    <p className={styles.cell}>
+    <p className={classNames(styles.cell, { [styles.sort]: sorted })}>
       <span className={styles.text}>{getHeadCellText(type)}</span>
       <ComponentsSVG
         type={SVG_TYPES.arrowUp}
         className={classNames(
           styles.icon,
-          { [styles.sorted]: sorted },
+          { [styles.visible]: arrow },
           { [styles.arrowUp]: arrow === ARROW_ENUM.up }
         )}
       />

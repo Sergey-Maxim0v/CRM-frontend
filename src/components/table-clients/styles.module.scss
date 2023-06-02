@@ -30,13 +30,6 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: $c-gray-placeholder;
-  transition: color 0.2s;
-  cursor: pointer;
-
-  &:hover {
-    color: $c-violet;
-  }
 }
 
 .columnRowCell {

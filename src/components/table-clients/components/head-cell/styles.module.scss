@@ -7,7 +7,18 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  justify-content: flex-start;transition: color 0.2s;
+  justify-content: flex-start;
+  color: $c-gray-placeholder;
+  user-select: none;
+}
+
+.sort{
+  transition: color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: $c-violet;
+  }
 }
 
 .text {
@@ -26,10 +37,10 @@
   color: $c-violet;
 }
 
-.sorted {
+.visible {
   display: flex;
 }
 
-.arrowUp{
-transform: rotateX(180deg);
+.arrowUp {
+  transform: rotateX(180deg);
 }

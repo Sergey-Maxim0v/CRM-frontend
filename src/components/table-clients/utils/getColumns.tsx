@@ -35,7 +35,7 @@ const getColumns = ({
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.id}
-          sorted={sortedBy.type === SORT_ENUM.id}
+          sorted={true}
           arrow={getArrowEnum(SORT_ENUM.id)}
         />
       ),
@@ -49,7 +49,7 @@ const getColumns = ({
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.name}
-          sorted={sortedBy.type === SORT_ENUM.name}
+          sorted={true}
           arrow={getArrowEnum(SORT_ENUM.name)}
         />
       ),
@@ -62,7 +62,7 @@ const getColumns = ({
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.create}
-          sorted={sortedBy.type === SORT_ENUM.create}
+          sorted={true}
           arrow={getArrowEnum(SORT_ENUM.create)}
         />
       ),
@@ -76,7 +76,7 @@ const getColumns = ({
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.update}
-          sorted={sortedBy.type === SORT_ENUM.update}
+          sorted={true}
           arrow={getArrowEnum(SORT_ENUM.update)}
         />
       ),

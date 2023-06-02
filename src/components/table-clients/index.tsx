@@ -25,17 +25,26 @@ const TableClients: FC = () => {
     direction: true,
   });
 
+  console.log(sortedBy);
+
+  const onSort = (type: SORT_ENUM) => {
+    if (sortedBy.type === type) {
+      setSortedBy((prev) => ({ ...prev, direction: !prev.direction }));
+    } else {
+      setSortedBy({ type, direction: true });
+    }
+  };
+
   const columnsProps: IIGetColumn = {
     sortedBy,
-    sortById: () => console.log("id"),
-    sortByName: () => console.log("name"),
-    sortByCreate: () => console.log("create"),
-    sortByUpdate: () => console.log("update"),
+    sortById: () => onSort(SORT_ENUM.id),
+    sortByName: () => onSort(SORT_ENUM.name),
+    sortByCreate: () => onSort(SORT_ENUM.create),
+    sortByUpdate: () => onSort(SORT_ENUM.update),
   };
 
   const columns: IColumn[] = useMemo(
     () => getColumns(columnsProps),
-    // eslint-disable-next-line
     [sortedBy]
   );
 
