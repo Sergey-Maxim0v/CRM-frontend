@@ -21,7 +21,7 @@ const Table: FC<ITable> = ({
         {columns.map((column) => (
           <div
             key={`head-cell-${column.rowKey}`}
-            onClick={() => column.onClickHead}
+            onClick={() => column.onClickHead?.()}
             className={classNames(column.headCellStyle, styles.tableHeadCell)}
             style={
               column.width

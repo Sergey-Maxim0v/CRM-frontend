@@ -3,9 +3,10 @@ import { Context } from "../../context/context";
 import Table from "../table";
 import { IColumn, IRow } from "../table/types";
 import styles from "./styles.module.scss";
-import getColumns from "./utils/getColumns";
+import getColumns, { IIGetColumn } from "./utils/getColumns";
 import getRows from "./utils/getRows";
 import filterRowsByHeader from "./utils/filterRowsByHeader";
+import { ISort, SORT_ENUM } from "./types";
 
 const TableClients: FC = () => {
   const {
@@ -19,8 +20,24 @@ const TableClients: FC = () => {
   const [filteredRows, setFilteredRows] = useState<IRow[]>();
   const [errorMessage, setErrorMessage] = useState("");
   const [noListMessage, setNoListMessage] = useState("");
+  const [sortedBy, setSortedBy] = useState<ISort>({
+    type: SORT_ENUM.id,
+    direction: true,
+  });
 
-  const columns: IColumn[] = useMemo(() => getColumns(), []);
+  const columnsProps: IIGetColumn = {
+    sortedBy,
+    sortById: () => console.log("id"),
+    sortByName: () => console.log("name"),
+    sortByCreate: () => console.log("create"),
+    sortByUpdate: () => console.log("update"),
+  };
+
+  const columns: IColumn[] = useMemo(
+    () => getColumns(columnsProps),
+    // eslint-disable-next-line
+    [sortedBy]
+  );
 
   const filterRows = (id: string) =>
     setRows((prev) => prev.filter((row) => row.client.id !== id));
@@ -51,7 +68,9 @@ const TableClients: FC = () => {
     } else {
       setNoListMessage("");
     }
-  }, [filteredRows]);
+
+    // TODO: sort effect
+  }, [filteredRows, sortedBy]);
 
   useEffect(() => {
     if (isError) {

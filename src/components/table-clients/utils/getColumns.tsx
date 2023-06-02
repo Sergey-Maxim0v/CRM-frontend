@@ -2,83 +2,96 @@ import { IColumn } from "../../table/types";
 import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import HeadCell from "../components/head-cell";
-import { ARROW_ENUM } from "../types";
+import { ARROW_ENUM, ISort, SORT_ENUM } from "../types";
 import classNames from "classnames";
 
-const getColumns = (): IColumn[] => {
-  // TODO: sort functions
-  const TODO_KOSTYL = false;
+export interface IIGetColumn {
+  sortedBy: ISort;
+  sortById: () => void;
+  sortByName: () => void;
+  sortByCreate: () => void;
+  sortByUpdate: () => void;
+}
+
+const getColumns = ({
+  sortedBy,
+  sortById,
+  sortByName,
+  sortByCreate,
+  sortByUpdate,
+}: IIGetColumn): IColumn[] => {
+  const getArrowEnum = (type: SORT_ENUM): ARROW_ENUM | undefined => {
+    if (type === sortedBy.type && sortedBy.direction) {
+      return ARROW_ENUM.up;
+    }
+    if (type === sortedBy.type && !sortedBy.direction) {
+      return ARROW_ENUM.down;
+    }
+    return undefined;
+  };
 
   return [
     {
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.id}
-          sorted={TODO_KOSTYL}
-          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+          sorted={sortedBy.type === SORT_ENUM.id}
+          arrow={getArrowEnum(SORT_ENUM.id)}
         />
       ),
       width: 130,
       rowKey: TABLE_COLUMNS_ENUM.id,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__id),
       cellStyle: classNames(styles.columnRowCell, styles.cell__id),
-      onClickHead: () => {
-        // TODO: sort by id
-      },
+      onClickHead: sortById,
     },
     {
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.name}
-          sorted={TODO_KOSTYL}
-          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+          sorted={sortedBy.type === SORT_ENUM.name}
+          arrow={getArrowEnum(SORT_ENUM.name)}
         />
       ),
       rowKey: TABLE_COLUMNS_ENUM.name,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__name),
       cellStyle: classNames(styles.columnRowCell, styles.cell__name),
-      onClickHead: () => {
-        // TODO: sort by name
-      },
+      onClickHead: sortByName,
     },
     {
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.create}
-          sorted={TODO_KOSTYL}
-          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+          sorted={sortedBy.type === SORT_ENUM.create}
+          arrow={getArrowEnum(SORT_ENUM.create)}
         />
       ),
       width: 196,
       rowKey: TABLE_COLUMNS_ENUM.create,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__create),
       cellStyle: classNames(styles.columnRowCell, styles.cell__create),
-      onClickHead: () => {
-        // TODO: sort by date of create
-      },
+      onClickHead: sortByCreate,
     },
     {
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.update}
-          sorted={TODO_KOSTYL}
-          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+          sorted={sortedBy.type === SORT_ENUM.update}
+          arrow={getArrowEnum(SORT_ENUM.update)}
         />
       ),
       width: 192,
       rowKey: TABLE_COLUMNS_ENUM.update,
       headCellStyle: classNames(styles.columnHeadCell, styles.cell__update),
       cellStyle: classNames(styles.columnRowCell, styles.cell__update),
-      onClickHead: () => {
-        // TODO: sort by date of change
-      },
+      onClickHead: sortByUpdate,
     },
     {
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.contacts}
-          sorted={TODO_KOSTYL}
-          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+          sorted={false}
+          arrow={undefined}
         />
       ),
       width: 160,
@@ -90,8 +103,8 @@ const getColumns = (): IColumn[] => {
       headChildren: (
         <HeadCell
           type={TABLE_COLUMNS_ENUM.actions}
-          sorted={TODO_KOSTYL}
-          arrow={TODO_KOSTYL ? undefined : ARROW_ENUM.up}
+          sorted={false}
+          arrow={undefined}
         />
       ),
       width: 220,
