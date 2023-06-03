@@ -23,21 +23,52 @@ const ContactComponent: FC<IContactComponent> = ({ contact, className }) => {
     }
   };
 
-  return (
-    <a
-      href={getHref()}
-      target={
-        contact.type === CONTACT_TYPES.vk ||
-        contact.type === CONTACT_TYPES.telegram
-          ? "_blank"
-          : undefined
-      }
-      className={classNames(styles.link, className)}
-    >
-      <ComponentsSVGContacts type={contact.type} className={styles.icon} />
+  const getBalloonText = () => {
+    switch (contact.type) {
+      case CONTACT_TYPES.tel:
+        return `Телефон: `;
+      case CONTACT_TYPES.otherTel:
+        return `Другой телефон: `;
+      case CONTACT_TYPES.email:
+        return `Email: `;
+      case CONTACT_TYPES.telegram:
+        return `Telegram: `;
+      case CONTACT_TYPES.vk:
+        return `ВКонтакте: `;
+      default:
+        return "";
+    }
+  };
 
-      <span className={styles.balloon}>{contact.value}</span>
-    </a>
+  const onClickBalloon = () => {
+    navigator.clipboard
+      .writeText(contact.value)
+      .then(() => alert("Контакт скопирован в буфер обмена"))
+      .catch((error) =>
+        console.error("Ошибка копирования контакта в буфер обмена:::", error)
+      );
+  };
+
+  return (
+    <div className={classNames(styles.row, className)}>
+      <a
+        href={getHref()}
+        target={
+          contact.type === CONTACT_TYPES.vk ||
+          contact.type === CONTACT_TYPES.telegram
+            ? "_blank"
+            : undefined
+        }
+        className={styles.link}
+      >
+        <ComponentsSVGContacts type={contact.type} className={styles.icon} />
+      </a>
+
+      <div className={styles.balloon} onClick={() => onClickBalloon()}>
+        <span className={styles.balloonType}>{getBalloonText()}</span>
+        {contact.value}
+      </div>
+    </div>
   );
 };
 
