@@ -43,7 +43,7 @@ const ContactComponent: FC<IContactComponent> = ({ contact, className }) => {
   const onClickBalloon = () => {
     navigator.clipboard
       .writeText(contact.value)
-      .then(() => alert("Контакт скопирован в буфер обмена"))
+      .then(() => alert(`Контакт "${contact.value}" скопирован в буфер обмена`))
       .catch((error) =>
         console.error("Ошибка копирования контакта в буфер обмена:::", error)
       );
