@@ -68,6 +68,7 @@ const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
             setIsOpen(true);
           } else {
             onChange(options[indexSelected]);
+            setIsOpen(false);
           }
           break;
 
