@@ -1,4 +1,5 @@
 .link {
+  position: relative;
   width: 16px;
   height: 16px;
   color: $c-violet;
@@ -7,10 +8,39 @@
   &:hover {
     color: $c-violet-dark;
   }
+
+  &:hover .balloon {
+    display: flex;
+  }
 }
 
 .icon {
   width: 100%;
   height: 100%;
   color: currentColor;
+}
+
+.balloon {
+  display: none;
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  padding: 8px 14px;
+  height: 36px;
+  width: auto;
+  background-color: $c-black;
+  transform: translateX(-50%);
+  align-items: center;
+  justify-content: center;
+  color: $c-white;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top: 6px solid  $c-black;
+  }
 }

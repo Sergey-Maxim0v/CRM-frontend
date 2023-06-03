@@ -35,6 +35,8 @@ const ContactComponent: FC<IContactComponent> = ({ contact, className }) => {
       className={classNames(styles.link, className)}
     >
       <ComponentsSVGContacts type={contact.type} className={styles.icon} />
+
+      <span className={styles.balloon}>{contact.value}</span>
     </a>
   );
 };

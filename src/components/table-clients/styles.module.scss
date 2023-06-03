@@ -25,7 +25,8 @@
 
 .columnHeadCell {
   padding: 8px 20px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   text-overflow: ellipsis;
   font-weight: 400;
   font-size: 12px;
@@ -42,7 +43,8 @@
   }
 
   &__name {
-
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__create {
@@ -61,7 +63,7 @@
   }
 }
 
-.bodyCell{
+.bodyCell {
   &__id {
 
   }
