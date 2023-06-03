@@ -13,9 +13,9 @@ const sortCallbackByDate = ({
   };
 
   if (direction) {
-    return getTime(time2) - getTime(time1);
-  } else {
     return getTime(time1) - getTime(time2);
+  } else {
+    return getTime(time2) - getTime(time1);
   }
 };
 

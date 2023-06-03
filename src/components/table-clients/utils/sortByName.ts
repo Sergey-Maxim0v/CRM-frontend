@@ -13,11 +13,11 @@ const sortByName = ({
 
   if (direction) {
     return rows.sort((row1, row2) =>
-      sortStringCallback(getName(row1), getName(row2))
+      sortStringCallback(getName(row2), getName(row1))
     );
   } else {
     return rows.sort((row1, row2) =>
-      sortStringCallback(getName(row2), getName(row1))
+      sortStringCallback(getName(row1), getName(row2))
     );
   }
 };

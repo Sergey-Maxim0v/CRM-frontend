@@ -18,11 +18,11 @@ const TableClients: FC = () => {
   } = useContext(Context);
 
   const [rows, setRows] = useState<IRow[]>([]);
-  const [filteredRows, setFilteredRows] = useState<IRow[]>();
+  const [filteredSortedRows, setFilteredSortedRows] = useState<IRow[]>();
   const [errorMessage, setErrorMessage] = useState("");
   const [noListMessage, setNoListMessage] = useState("");
   const [sortedBy, setSortedBy] = useState<ISort>({
-    type: SORT_ENUM.id,
+    type: SORT_ENUM.name,
     direction: true,
   });
 
@@ -35,8 +35,22 @@ const TableClients: FC = () => {
   }, [data]);
 
   useEffect(() => {
-    // TODO: при первом клике на заголовок и по дефолту не строки сортируются
+    if (filteredSortedRows) {
+      console.log(
+        1,
+        filteredSortedRows?.reduce(
+          (res, row) => res.concat(row.client.id.slice(2, 6)),
+          []
+        )
+      );
+    }
+  }, [filteredSortedRows]);
 
+  useEffect(() => {
+    console.log(2, sortedBy);
+  }, [sortedBy]);
+
+  useEffect(() => {
     const sortedRows = getSortedRows({ rows, sortedBy });
 
     if (filter && rows.length) {
@@ -44,25 +58,25 @@ const TableClients: FC = () => {
         filterRowsByHeader({ row, filter })
       );
 
-      setFilteredRows(rowsForRender);
+      setFilteredSortedRows(rowsForRender);
       return;
     }
 
     if (rows.length) {
-      setFilteredRows(sortedRows);
+      setFilteredSortedRows(sortedRows);
       return;
     }
 
-    setFilteredRows(undefined);
+    setFilteredSortedRows(undefined);
   }, [filter, rows, sortedBy]);
 
   useEffect(() => {
-    if (filteredRows && !filteredRows.length) {
+    if (filteredSortedRows && !filteredSortedRows.length) {
       setNoListMessage("Список клиентов пуст");
     } else {
       setNoListMessage("");
     }
-  }, [filteredRows]);
+  }, [filteredSortedRows]);
 
   useEffect(() => {
     if (isError) {
@@ -74,7 +88,7 @@ const TableClients: FC = () => {
 
   return (
     <Table
-      rows={filteredRows ?? []}
+      rows={filteredSortedRows ?? []}
       columns={columns}
       tableHeadStyle={styles.head}
       tableRowStyle={styles.row}
