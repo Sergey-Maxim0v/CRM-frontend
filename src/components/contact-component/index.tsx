@@ -23,7 +23,7 @@ const ContactComponent: FC<IContactComponent> = ({ contact, className }) => {
     }
   };
 
-  const getBalloonText = () => {
+  const getBalloonTextType = () => {
     switch (contact.type) {
       case CONTACT_TYPES.tel:
         return `Телефон: `;
@@ -65,7 +65,7 @@ const ContactComponent: FC<IContactComponent> = ({ contact, className }) => {
       </a>
 
       <div className={styles.balloon} onClick={() => onClickBalloon()}>
-        <span className={styles.balloonType}>{getBalloonText()}</span>
+        <span className={styles.balloonType}>{getBalloonTextType()}</span>
         {contact.value}
       </div>
     </div>
