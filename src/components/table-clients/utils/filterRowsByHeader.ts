@@ -5,10 +5,14 @@ const filterRowsByHeader = ({
   filter,
 }: {
   row: IRow;
-  filter: string;
+  filter: string | undefined;
 }): boolean => {
   const client = row.client;
   const contacts = client.contacts;
+
+  if (!filter) {
+    return true;
+  }
 
   if (
     `${client.name} ${client.surname} ${client.lastName}`
@@ -21,7 +25,7 @@ const filterRowsByHeader = ({
   return !!(
     contacts &&
     contacts.find((contact) =>
-      contact.value.toUpperCase().includes(filter.toUpperCase())
+      contact.value.toUpperCase().includes(filter?.toUpperCase())
     )
   );
 };

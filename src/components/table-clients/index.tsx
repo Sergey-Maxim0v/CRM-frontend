@@ -22,7 +22,7 @@ const TableClients: FC = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [noListMessage, setNoListMessage] = useState("");
   const [sortedBy, setSortedBy] = useState<ISort>({
-    type: SORT_ENUM.name,
+    type: SORT_ENUM.id,
     direction: true,
   });
 
@@ -35,47 +35,38 @@ const TableClients: FC = () => {
   }, [data]);
 
   useEffect(() => {
-    if (filteredSortedRows) {
-      console.log(
-        1,
-        filteredSortedRows?.reduce(
-          (res, row) => res.concat(row.client.id.slice(2, 6)),
-          []
-        )
-      );
+    if (!rows.length) {
+      setFilteredSortedRows(undefined);
+      return;
     }
-  }, [filteredSortedRows]);
 
-  useEffect(() => {
-    console.log(2, sortedBy);
-  }, [sortedBy]);
-
-  useEffect(() => {
     const sortedRows = getSortedRows({ rows, sortedBy });
 
-    if (filter && rows.length) {
-      const rowsForRender = sortedRows.filter((row) =>
-        filterRowsByHeader({ row, filter })
-      );
+    const filteredRows = sortedRows.filter((row) =>
+      filterRowsByHeader({ row, filter })
+    );
 
-      setFilteredSortedRows(rowsForRender);
-      return;
-    }
-
-    if (rows.length) {
-      setFilteredSortedRows(sortedRows);
-      return;
-    }
-
-    setFilteredSortedRows(undefined);
+    setFilteredSortedRows(filteredRows);
   }, [filter, rows, sortedBy]);
 
   useEffect(() => {
-    if (filteredSortedRows && !filteredSortedRows.length) {
-      setNoListMessage("Список клиентов пуст");
-    } else {
-      setNoListMessage("");
+    if (filter && !filteredSortedRows?.length) {
+      setNoListMessage(
+        "По Вашему запросу ничего не найдено. Попробуйте изменить критерии поиска."
+      );
+      return;
     }
+
+    if (!filteredSortedRows?.length) {
+      setNoListMessage(
+        "Список клиентов пуст. Нажмите «Добавить клиента», чтоб сохранить первого клиента."
+      );
+      return;
+    }
+
+    setNoListMessage("");
+
+    // eslint-disable-next-line
   }, [filteredSortedRows]);
 
   useEffect(() => {
