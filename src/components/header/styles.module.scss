@@ -6,11 +6,11 @@
   justify-content: center;
   background: $c-white;
   box-shadow: 0 9.03012px 27.0904px rgba(176, 190, 197, 0.32),
-    0 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
+  0 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
   z-index: 100;
 }
 
-.row{
+.row {
   width: $w-page;
   display: flex;
   align-items: center;
@@ -29,4 +29,8 @@
   height: 50px;
   width: 100%;
   max-width: 580px;
+
+  @media (max-width: $w-mobile-small) {
+    display: none;
+  }
 }

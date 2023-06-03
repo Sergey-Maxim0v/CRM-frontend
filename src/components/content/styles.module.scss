@@ -4,3 +4,9 @@
   padding: 40px 20px 80px;
   background-color: $c-gray-bg-page;
 }
+
+.tableRow{
+  margin-bottom: 40px;
+  max-width: 100%;
+  overflow-x: auto;
+}

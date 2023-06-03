@@ -46,7 +46,11 @@ const Content = () => {
   return (
     <section className={stiles.row}>
       <PageTitle />
-      <TableClients />
+
+      <section className={stiles.tableRow}>
+        <TableClients />
+      </section>
+
       <ButtonAdd openModal={() => setIsOpenAddModal(true)} />
 
       {isOpenAddModal && (
