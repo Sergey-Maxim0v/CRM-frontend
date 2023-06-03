@@ -58,9 +58,7 @@ const TableClients: FC = () => {
     }
 
     if (!filteredSortedRows?.length) {
-      setNoListMessage(
-        "Список клиентов пуст. Нажмите «Добавить клиента», чтоб сохранить первого клиента."
-      );
+      setNoListMessage("Список клиентов пуст.");
       return;
     }
 
