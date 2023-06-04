@@ -29,9 +29,7 @@ const TableClients: FC = () => {
   const { columns } = useGetColumns({ sortedBy, setSortedBy });
 
   useEffect(() => {
-    const filterRowsOnDelete = (id: string) =>
-      setRows((prev) => prev.filter((row) => row.client.id !== id));
-    setRows(getRows({ data, filterRowsOnDelete: filterRowsOnDelete }));
+    setRows(getRows({ data }));
   }, [data]);
 
   useEffect(() => {

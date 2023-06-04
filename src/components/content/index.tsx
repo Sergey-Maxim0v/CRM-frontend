@@ -20,7 +20,7 @@ const initialContactData: IClient = {
 };
 
 const Content = () => {
-  const { setClientsData, refetch } = useContext(Context);
+  const { setClientsData } = useContext(Context);
 
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   const [clientData, setClientData] = useState<IClient>(initialContactData);
@@ -37,9 +37,6 @@ const Content = () => {
       .finally(() => {
         setIsLoadSaveClient(false);
         setIsOpenAddModal(false);
-        refetch().catch((error) =>
-          console.error("Error refetch clients:::", error)
-        );
       });
   };
 

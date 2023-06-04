@@ -11,19 +11,19 @@ import updateClient from "../../../../api/updateClient";
 import { Context } from "../../../../context/context";
 import { MODAL_UPDATE_OR_ADD_TYPE } from "../../../modal-update-or-add/types";
 
-const CellActivities: FC<ICellActivities> = ({
-  client,
-  filterRowsOnDelete,
-}) => {
-  const { setClientsData, refetch } = useContext(Context);
+const CellActivities: FC<ICellActivities> = ({ client }) => {
+  const { setClientsData } = useContext(Context);
   const [isDeleteModal, setIsDeleteModal] = useState(false);
   const [isUpdateModal, setIsUpdateModal] = useState(false);
   const [isLoadUpdate, setIsLoadUpdate] = useState(false);
   const [isLoadDelete, setIsLoadDelete] = useState(false);
   const [updatedClient, setUpdatedClient] = useState<IClient>({ ...client });
 
-  const onDeleteModal = async () => {
+  const onSubmitDeleteModal = async () => {
     setIsLoadDelete(true);
+
+    const filterRowsOnDelete = (id: string) =>
+      setClientsData((prev) => prev.filter((client) => client.id !== id));
 
     deleteClient(client)
       .then(() => {
@@ -35,11 +35,10 @@ const CellActivities: FC<ICellActivities> = ({
       .finally(() => {
         setIsLoadDelete(false);
         setIsDeleteModal(false);
-        refetch();
       });
   };
 
-  const onUpdateModal = async () => {
+  const onSubmitUpdateModal = async () => {
     setIsLoadUpdate(true);
 
     await updateClient(updatedClient)
@@ -67,7 +66,6 @@ const CellActivities: FC<ICellActivities> = ({
       .finally(() => {
         setIsLoadUpdate(false);
         setIsUpdateModal(false);
-        refetch();
       });
     return;
   };
@@ -94,7 +92,7 @@ const CellActivities: FC<ICellActivities> = ({
 
       {isDeleteModal && (
         <ModalDelete
-          onDeleteModal={onDeleteModal}
+          onDeleteModal={onSubmitDeleteModal}
           closeModal={() => setIsDeleteModal(false)}
           isLoad={isLoadDelete}
         />
@@ -102,7 +100,7 @@ const CellActivities: FC<ICellActivities> = ({
 
       {isUpdateModal && (
         <ModalUpdateOrAdd
-          onSubmit={() => onUpdateModal()}
+          onSubmit={() => onSubmitUpdateModal()}
           setClient={setUpdatedClient}
           client={updatedClient}
           closeModal={() => setIsUpdateModal(false)}
