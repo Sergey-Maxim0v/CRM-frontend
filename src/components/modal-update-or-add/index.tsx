@@ -1,5 +1,16 @@
-import { ChangeEvent, FC, MouseEvent, useEffect, useRef } from "react";
-import { IModalUpdateOrAdd, MODAL_UPDATE_OR_ADD_TYPE } from "./types";
+import {
+  ChangeEvent,
+  FC,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  IModalUpdateOrAdd,
+  IValidateClient,
+  MODAL_UPDATE_OR_ADD_TYPE,
+} from "./types";
 import Modal from "../modal";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
@@ -7,6 +18,13 @@ import ModalContacts from "../modal-contacts";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import ButtonCancel from "../button-cancel";
+import stringToClear from "../../utils/stringToClear";
+
+const initialValidate: IValidateClient = {
+  name: true,
+  surname: true,
+  contacts: true,
+};
 
 const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
   client,
@@ -20,19 +38,57 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
   // @ts-ignore
   const firstInputRef = useRef<HTMLInputElement>(null);
 
+  const [valid, setValid] = useState<IValidateClient>(initialValidate);
+
   const onChangeSurname = (event: ChangeEvent<HTMLInputElement>) => {
+    setValid(initialValidate);
     setClient({ ...client, surname: event.target.value });
   };
 
-  const onChangeName = (event: ChangeEvent<HTMLInputElement>) =>
+  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    setValid(initialValidate);
     setClient({ ...client, name: event.target.value });
+  };
 
-  const onChangeLastName = (event: ChangeEvent<HTMLInputElement>) =>
+  const onChangeLastName = (event: ChangeEvent<HTMLInputElement>) => {
+    setValid(initialValidate);
     setClient({ ...client, lastName: event.target.value });
+  };
+
+  const onChangeContact = () => {
+    setValid(initialValidate);
+    //TODO
+  };
+
+  const onDeleteContact = () => {
+    setValid(initialValidate);
+    //TODO
+  };
+
+  const validateForm = () => {
+    const isValidName = !!stringToClear(client.name);
+    const isValidSurname = !!stringToClear(client.surname);
+    const isValidContacts = !client.contacts?.some(
+      (contact) => !stringToClear(contact.value)
+    );
+
+    setValid({
+      name: isValidName,
+      surname: isValidSurname,
+      contacts: isValidContacts,
+    });
+
+    return isValidName && isValidSurname && isValidContacts;
+  };
 
   const sendClientData = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    await onSubmit();
+
+    const isValid = validateForm();
+
+    if (isValid) {
+      await onSubmit();
+    }
   };
 
   useEffect(() => {
@@ -71,6 +127,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           type="text"
           required
           className={styles.input}
+          isError={valid.name}
         />
 
         <InputModal
@@ -80,6 +137,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           type="text"
           required
           className={styles.input}
+          isError={valid.surname}
         />
 
         <InputModal

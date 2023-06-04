@@ -14,3 +14,9 @@ export enum MODAL_UPDATE_OR_ADD_TYPE {
   add = "modal-add",
   update = "modal-update",
 }
+
+export interface IValidateClient {
+  name: boolean;
+  surname: boolean;
+  contacts: boolean;
+}
