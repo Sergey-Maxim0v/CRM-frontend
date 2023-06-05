@@ -46,11 +46,15 @@ Axios, Classnames, Prettier, SASS
 <img src="src/assets/images/filter-sort.png" alt="">
 </div>
 
+<br/>
+
 Модальное окно добавления клиента.
 
 <div style="text-align: center;">
 <img src="src/assets/images/modal-add.png" alt="">
 </div>
+
+<br/>
 
 Модальное окно изменения клиента.
 
@@ -58,17 +62,23 @@ Axios, Classnames, Prettier, SASS
 <img src="src/assets/images/modal-update.png" alt="">
 </div>
 
+<br/>
+
 Селект, как и все модальное окно, поддерживает управление с клавиатуры
 
 <div style="text-align: center;">
 <img src="src/assets/images/select.png" alt="">
 </div>
 
+<br/>
+
 При попытке отправки данны, выделены некорректно заполненные поля, и описание ошибки.
 
 <div style="text-align: center;">
 <img src="src/assets/images/modal-error.png" alt="">
 </div>
+
+<br/>
 
 Модальное окно удаление клиента.
 
