@@ -3,6 +3,16 @@
   height: 42px;
   position: relative;
   cursor: text;
+
+  &.error{
+    & .input{
+      border-color: red;
+    }
+
+    & .placeholder {
+      color: $c-red;
+    }
+  }
 }
 
 .input {

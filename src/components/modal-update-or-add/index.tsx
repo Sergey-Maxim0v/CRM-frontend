@@ -127,7 +127,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           type="text"
           required
           className={styles.input}
-          isError={valid.name}
+          isError={!valid.surname}
         />
 
         <InputModal
@@ -137,7 +137,7 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           type="text"
           required
           className={styles.input}
-          isError={valid.surname}
+          isError={!valid.name}
         />
 
         <InputModal

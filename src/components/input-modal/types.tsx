@@ -5,5 +5,6 @@ export interface IInputModal
     HTMLInputElement,
     "className" | "type" | "placeholder" | "value" | "required"
   > {
+  isError?: boolean;
   onChange: (val: ChangeEvent<HTMLInputElement>) => void;
 }
