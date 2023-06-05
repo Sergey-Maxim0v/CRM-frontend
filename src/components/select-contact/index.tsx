@@ -6,6 +6,7 @@ import Select from "../select";
 import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
 import { ISelectTypeOption } from "../select/types";
+import classNames from "classnames";
 
 const CONTACT_TYPE_NAMES = {
   [CONTACT_TYPES.tel]: "Телефон",
@@ -30,6 +31,7 @@ const SelectContact: FC<ISelectContact> = ({
   contact,
   setContact,
   onDelete,
+  isError,
 }) => {
   const currentOption = SELECT_CONTACT_OPTIONS.find(
     (option: ISelectTypeOption) => option.value === contact.type
@@ -57,7 +59,7 @@ const SelectContact: FC<ISelectContact> = ({
 
         <input
           type="text"
-          className={styles.input}
+          className={classNames(styles.input, { [styles.error]: isError })}
           value={contact.value}
           onChange={(event) => onChangeValue(event.target.value)}
           placeholder="Введите данные контакта"

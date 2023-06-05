@@ -55,16 +55,6 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
     setClient({ ...client, lastName: event.target.value });
   };
 
-  const onChangeContact = () => {
-    setValid(initialValidate);
-    //TODO
-  };
-
-  const onDeleteContact = () => {
-    setValid(initialValidate);
-    //TODO
-  };
-
   const validateForm = () => {
     const isValidName = !!stringToClear(client.name);
     const isValidSurname = !!stringToClear(client.surname);
@@ -149,7 +139,11 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           required={false}
         />
 
-        <ModalContacts clientData={client} setClientData={setClient} />
+        <ModalContacts
+          clientData={client}
+          setClientData={setClient}
+          isError={!valid.contacts}
+        />
 
         <Button
           type={BUTTON_TYPES.primary}

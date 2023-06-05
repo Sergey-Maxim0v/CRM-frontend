@@ -4,4 +4,5 @@ export interface ISelectContact {
   contact: IContact;
   setContact: (val: IContact) => void;
   onDelete: () => void;
+  isError?: boolean;
 }

@@ -48,6 +48,16 @@
     border-right-color: $c-violet;
     border-left-color: $c-violet;
   }
+
+  &.error{
+    border-color: $c-red;
+    border-right-color: $c-red;
+    border-left-color: $c-red;
+
+    &::placeholder {
+      color: $c-red;
+    }
+  }
 }
 
 .deleteButton {

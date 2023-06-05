@@ -6,6 +6,7 @@ import { CONTACT_TYPES, IContact } from "../../api/types";
 import ComponentsSVG from "../components-svg";
 import SVG_TYPES from "../../enums/svg-types";
 import SelectContact from "../select-contact";
+import stringToClear from "../../utils/stringToClear";
 
 const initialContact: IContact = {
   type: CONTACT_TYPES.tel,
@@ -16,7 +17,16 @@ const ModalContacts: FC<IModalContacts> = ({
   clientData,
   setClientData,
   className,
+  isError,
 }) => {
+  const arrayNoValidContactIndex: number[] = clientData.contacts
+    ? clientData.contacts.reduce(
+        (res, contact, index) =>
+          stringToClear(contact.value) ? res : res.concat(index),
+        []
+      )
+    : [];
+
   const addNewContact = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setClientData({
@@ -69,6 +79,7 @@ const ModalContacts: FC<IModalContacts> = ({
           contact={contact}
           setContact={(updatedContact) => setContact(index, updatedContact)}
           onDelete={() => onDeleteContact(contact)}
+          isError={isError ? arrayNoValidContactIndex.includes(index) : false}
         />
       ))}
 

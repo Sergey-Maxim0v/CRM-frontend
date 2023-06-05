@@ -5,4 +5,5 @@ export interface IModalContacts {
   clientData: IClient;
   setClientData: Dispatch<SetStateAction<IClient>>;
   className?: string;
+  isError?: boolean;
 }
