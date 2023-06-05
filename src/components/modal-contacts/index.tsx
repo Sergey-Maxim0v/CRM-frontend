@@ -19,9 +19,9 @@ const ModalContacts: FC<IModalContacts> = ({
   className,
   isError,
 }) => {
-  const arrayNoValidContactIndex: number[] = clientData.contacts
+  const arrayNoValidContactIndex = clientData.contacts
     ? clientData.contacts.reduce(
-        (res, contact, index) =>
+        (res: number[], contact, index) =>
           stringToClear(contact.value) ? res : res.concat(index),
         []
       )
