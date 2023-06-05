@@ -12,7 +12,6 @@
 
 ---
 <h2 align="center">Available Scripts</h2>
----
 
 <p align="center">
 npm run dev
@@ -32,7 +31,6 @@ npm run preview
 
 ---
 <h2 align="center">React 18, Typescript, Vite.</h2>
----
 
 <p align="center">
 Axios, Classnames, Prettier, SASS 
