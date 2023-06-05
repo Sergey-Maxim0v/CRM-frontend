@@ -1,6 +1,6 @@
-<h1 style="text-align: center;">CRM-frontend</h1>
+<h1 align="center">CRM-frontend</h1>
 
-<div style="text-align: center;">
+<div align="center">
 
 ![GitHub language count](https://img.shields.io/github/languages/count/Sergey-Maxim0v/CRM-frontend)
 ![GitHub top language](https://img.shields.io/github/languages/top/Sergey-Maxim0v/CRM-frontend)
@@ -11,22 +11,32 @@
 </div>
 
 ---
-Available Scripts
+<h2 align="center">Available Scripts</h2>
 ---
 
+<p align="center">
 npm run dev
+</p>
 
+<p align="center">
 npm run build
+</p>
 
+<p align="center">
 npm run lint
+</p>
 
+<p align="center">
 npm run preview
+</p>
 
 ---
-React 18, Typescript, Vite.
+<h2 align="center">React 18, Typescript, Vite.</h2>
 ---
 
+<p align="center">
 Axios, Classnames, Prettier, SASS 
+</p>
 
 ---
 Описание
