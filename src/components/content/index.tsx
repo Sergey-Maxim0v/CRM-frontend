@@ -26,7 +26,7 @@ const Content = () => {
   const [clientData, setClientData] = useState<IClient>(initialContactData);
   const [isLoadSaveClient, setIsLoadSaveClient] = useState(false);
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setIsLoadSaveClient(true);
     saveNewClient(clientData)
       .then((res) => {

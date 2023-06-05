@@ -39,19 +39,19 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
   const firstInputRef = useRef<HTMLInputElement>(null);
 
   const [valid, setValid] = useState<IValidateClient>(initialValidate);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
   const onChangeSurname = (event: ChangeEvent<HTMLInputElement>) => {
-    setValid(initialValidate);
+    setValid({ ...valid, surname: true });
     setClient({ ...client, surname: event.target.value });
   };
 
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
-    setValid(initialValidate);
+    setValid({ ...valid, name: true });
     setClient({ ...client, name: event.target.value });
   };
 
   const onChangeLastName = (event: ChangeEvent<HTMLInputElement>) => {
-    setValid(initialValidate);
     setClient({ ...client, lastName: event.target.value });
   };
 
@@ -77,13 +77,14 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
     const isValid = validateForm();
 
     if (isValid) {
-      await onSubmit();
+      await onSubmit().then(() => setErrorMessage(""));
+    } else {
+      setErrorMessage(
+        "Выделенные поля должны быть обязательно заполнены. " +
+          "Поле должно содержать как минимум одну букву или цифру"
+      );
     }
   };
-
-  useEffect(() => {
-    firstInputRef.current?.focus();
-  }, []);
 
   const getModalTitle = () => {
     switch (type) {
@@ -97,6 +98,10 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
         return "";
     }
   };
+
+  useEffect(() => {
+    firstInputRef.current?.focus();
+  }, []);
 
   return (
     <Modal closeModal={closeModal}>
@@ -144,6 +149,12 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           setClientData={setClient}
           isError={!valid.contacts}
         />
+
+        {errorMessage && (
+          <div className={styles.errorRow}>
+            <p className={styles.error}>{errorMessage}</p>
+          </div>
+        )}
 
         <Button
           type={BUTTON_TYPES.primary}

@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 export interface IModalUpdateOrAdd {
   client: IClient;
   setClient: Dispatch<SetStateAction<IClient>>;
-  onSubmit: () => void;
+  onSubmit: () => Promise<void>;
   closeModal: () => void;
   type: MODAL_UPDATE_OR_ADD_TYPE;
   isLoad: boolean;

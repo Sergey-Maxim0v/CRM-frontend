@@ -44,3 +44,25 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.errorRow {
+  width: 100%;
+  height: auto;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  width: 100%;
+  max-width: 255px;
+  height: auto;
+  white-space: normal;
+
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  text-align: center;
+  color: $c-red;
+}
