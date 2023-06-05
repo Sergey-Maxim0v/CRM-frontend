@@ -74,7 +74,7 @@ Axios, Classnames, Prettier, SASS
 
 <br/>
 
-Селект, как и все модальное окно, поддерживает управление с клавиатуры
+Селект, как и все модальное окно, поддерживает управление с клавиатуры.
 
 <div style="text-align: center;">
 <img src="src/assets/images/select.png" alt="">
@@ -82,7 +82,7 @@ Axios, Classnames, Prettier, SASS
 
 <br/>
 
-При попытке отправки данны, выделены некорректно заполненные поля, и описание ошибки.
+При попытке отправки данных, выделяются некорректно заполненные поля, и отображается описание ошибки.
 
 <div style="text-align: center;">
 <img src="src/assets/images/modal-error.png" alt="">
