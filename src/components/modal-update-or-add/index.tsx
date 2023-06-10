@@ -11,11 +11,11 @@ import {
   IValidateClient,
   MODAL_UPDATE_OR_ADD_TYPE,
 } from "./types";
-import Modal from "../../assets/ui-kit/modal";
+import Modal from "../../ui-kit/modal";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import ModalContacts from "../modal-contacts";
-import Button from "../../assets/ui-kit/button";
+import Button from "../../ui-kit/button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import stringToClear from "../../utils/stringToClear";
 

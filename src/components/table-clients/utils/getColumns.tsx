@@ -1,4 +1,4 @@
-import { IColumn } from "../../../assets/ui-kit/table/types";
+import { IColumn } from "../../../ui-kit/table/types";
 import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import HeadCell from "../components/head-cell";

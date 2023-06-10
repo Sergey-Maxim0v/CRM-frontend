@@ -1,4 +1,4 @@
-import SVG_TYPES from "../../../enums/svg-types";
+import SVG_TYPES from "../../enums/svg-types";
 import { FC } from "react";
 import { IComponentsSVG } from "./types";
 

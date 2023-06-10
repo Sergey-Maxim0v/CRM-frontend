@@ -2,8 +2,8 @@ import { FC, PropsWithChildren } from "react";
 import { BUTTON_ACTIVITIES_ENUM, IButtonActivities } from "./types";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
-import Loader from "../../assets/ui-kit/loader";
-import ComponentsSVG from "../../assets/ui-kit/components-svg";
+import Loader from "../../ui-kit/loader";
+import ComponentsSVG from "../../ui-kit/components-svg";
 import SVG_TYPES from "../../enums/svg-types";
 
 const ButtonActivities: FC<PropsWithChildren<IButtonActivities>> = ({

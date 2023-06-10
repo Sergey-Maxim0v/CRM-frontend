@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { IModalDelete } from "./types";
-import Modal from "../../assets/ui-kit/modal";
-import Button from "../../assets/ui-kit/button";
+import Modal from "../../ui-kit/modal";
+import Button from "../../ui-kit/button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import styles from "./styles.module.scss";
 

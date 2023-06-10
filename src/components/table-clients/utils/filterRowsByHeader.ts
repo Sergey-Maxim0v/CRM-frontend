@@ -1,4 +1,4 @@
-import { IRow } from "../../../assets/ui-kit/table/types";
+import { IRow } from "../../../ui-kit/table/types";
 
 const filterRowsByHeader = ({
   row,

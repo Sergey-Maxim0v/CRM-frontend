@@ -1,4 +1,4 @@
-import { IColumn } from "../assets/ui-kit/table/types";
+import { IColumn } from "../ui-kit/table/types";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import { ISort, SORT_ENUM } from "../components/table-clients/types";
 import getColumns, {

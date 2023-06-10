@@ -4,7 +4,7 @@ import classNames from "classnames";
 import styles from "./styles.module.scss";
 import Loader from "../loader";
 import ComponentsSVG from "../components-svg";
-import SVG_TYPES from "../../../enums/svg-types";
+import SVG_TYPES from "../../enums/svg-types";
 
 const Button: FC<PropsWithChildren<IButton>> = ({
   type,

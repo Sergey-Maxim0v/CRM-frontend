@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./styles.module.scss";
-import ComponentsSVG from "../../../../assets/ui-kit/components-svg";
+import ComponentsSVG from "../../../../ui-kit/components-svg";
 import SVG_TYPES from "../../../../enums/svg-types";
 import classNames from "classnames";
 import { ARROW_ENUM, IHeadCell } from "../../types";

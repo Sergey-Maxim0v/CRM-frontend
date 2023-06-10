@@ -7,7 +7,7 @@ import { Context } from "../../context/context";
 import saveNewClient from "../../api/saveNewClient";
 import { IClient } from "../../api/types";
 import { MODAL_UPDATE_OR_ADD_TYPE } from "../modal-update-or-add/types";
-import Button from "../../assets/ui-kit/button";
+import Button from "../../ui-kit/button";
 import SVG_TYPES from "../../enums/svg-types";
 import { BUTTON_TYPES } from "../../enums/button-types";
 
@@ -44,7 +44,7 @@ const Content = () => {
 
   return (
     <section className={stiles.row}>
-      <PageTitle />
+      <PageTitle>Клиенты</PageTitle>
 
       <section className={stiles.tableRow}>
         <TableClients />
