@@ -2,9 +2,9 @@ import { FC, PropsWithChildren } from "react";
 import { IButton } from "./types";
 import classNames from "classnames";
 import styles from "./styles.module.scss";
-import Loader from "../../assets/ui-kit/loader";
-import ComponentsSVG from "../../assets/ui-kit/components-svg";
-import SVG_TYPES from "../../enums/svg-types";
+import Loader from "../loader";
+import ComponentsSVG from "../components-svg";
+import SVG_TYPES from "../../../enums/svg-types";
 
 const Button: FC<PropsWithChildren<IButton>> = ({
   type,
@@ -14,6 +14,7 @@ const Button: FC<PropsWithChildren<IButton>> = ({
   loader,
   icon,
 }) => {
+  console.log(type);
   return (
     <button
       onClick={(event) => onClick?.(event)}

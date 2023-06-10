@@ -15,9 +15,8 @@ import Modal from "../../assets/ui-kit/modal";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import ModalContacts from "../modal-contacts";
-import Button from "../button";
+import Button from "../../assets/ui-kit/button";
 import { BUTTON_TYPES } from "../../enums/button-types";
-import ButtonCancel from "../button-cancel";
 import stringToClear from "../../utils/stringToClear";
 
 const initialValidate: IValidateClient = {
@@ -165,12 +164,13 @@ const ModalUpdateOrAdd: FC<IModalUpdateOrAdd> = ({
           Сохранить
         </Button>
 
-        <ButtonCancel
+        <Button
           className={styles.buttonClose}
           onClick={() => closeModal()}
+          type={BUTTON_TYPES.ghost}
         >
           Отмена
-        </ButtonCancel>
+        </Button>
       </form>
     </Modal>
   );

@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { IModalDelete } from "./types";
 import Modal from "../../assets/ui-kit/modal";
-import Button from "../button";
+import Button from "../../assets/ui-kit/button";
 import { BUTTON_TYPES } from "../../enums/button-types";
-import ButtonCancel from "../button-cancel";
 import styles from "./styles.module.scss";
 
 const ModalDelete: FC<IModalDelete> = ({
@@ -29,7 +28,9 @@ const ModalDelete: FC<IModalDelete> = ({
           Удалить
         </Button>
 
-        <ButtonCancel onClick={() => closeModal()}>Отмена</ButtonCancel>
+        <Button onClick={() => closeModal()} type={BUTTON_TYPES.ghost}>
+          Отмена
+        </Button>
       </div>
     </Modal>
   );

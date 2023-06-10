@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
-import { BUTTON_TYPES } from "../../enums/button-types";
-import SVG_TYPES from "../../enums/svg-types";
+import { BUTTON_TYPES } from "../../../enums/button-types";
+import SVG_TYPES from "../../../enums/svg-types";
 
 export interface IButton {
   type: BUTTON_TYPES;
