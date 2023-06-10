@@ -10,6 +10,7 @@ import { MODAL_UPDATE_OR_ADD_TYPE } from "../modal-update-or-add/types";
 import Button from "../../ui-kit/button";
 import SVG_TYPES from "../../enums/svg-types";
 import { BUTTON_TYPES } from "../../enums/button-types";
+import getIsValidClient from "../../utils/getIsValidClient";
 
 const initialContactData: IClient = {
   id: "",
@@ -29,6 +30,13 @@ const Content = () => {
   const [isLoadSaveClient, setIsLoadSaveClient] = useState(false);
 
   const onSubmit = async () => {
+    const isValidClient = getIsValidClient(clientData);
+
+    if (!isValidClient) {
+      console.error("Client object no valid");
+      return;
+    }
+
     setIsLoadSaveClient(true);
     saveNewClient(clientData)
       .then((res) => {

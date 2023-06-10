@@ -10,6 +10,7 @@ import { IClient } from "../../../../api/types";
 import updateClient from "../../../../api/updateClient";
 import { Context } from "../../../../context/context";
 import { MODAL_UPDATE_OR_ADD_TYPE } from "../../../modal-update-or-add/types";
+import getIsValidClient from "../../../../utils/getIsValidClient";
 
 const CellActivities: FC<ICellActivities> = ({ client }) => {
   const { setClientsData } = useContext(Context);
@@ -39,6 +40,13 @@ const CellActivities: FC<ICellActivities> = ({ client }) => {
   };
 
   const onSubmitUpdateModal = async () => {
+    const isValidClient = getIsValidClient(updatedClient);
+
+    if (!isValidClient) {
+      console.error("Client object no valid");
+      return;
+    }
+
     setIsLoadUpdate(true);
 
     await updateClient(updatedClient)

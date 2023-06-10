@@ -1,16 +1,8 @@
 import { IClient, INewClient } from "./types";
 import axios from "axios";
 import { CONTACTS_SAVE_NEW_URL } from "./api-url";
-import getIsValidClient from "../utils/getIsValidClient";
 
 const saveNewClient = async (client: IClient) => {
-  const isValidClient = getIsValidClient(client);
-
-  if (!isValidClient) {
-    console.error("Client object no valid");
-    return;
-  }
-
   const dataForSend: INewClient = {
     name: client.name,
     lastName: client.lastName,
