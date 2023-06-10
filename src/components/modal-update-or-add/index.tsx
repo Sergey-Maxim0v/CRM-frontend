@@ -11,7 +11,7 @@ import {
   IValidateClient,
   MODAL_UPDATE_OR_ADD_TYPE,
 } from "./types";
-import Modal from "../modal";
+import Modal from "../../assets/ui-kit/modal";
 import styles from "./styles.module.scss";
 import InputModal from "../input-modal";
 import ModalContacts from "../modal-contacts";

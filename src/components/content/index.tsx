@@ -1,5 +1,4 @@
 import PageTitle from "../page-title";
-import ButtonAdd from "../button-add";
 import stiles from "./styles.module.scss";
 import { useContext, useState } from "react";
 import TableClients from "../table-clients";
@@ -8,6 +7,9 @@ import { Context } from "../../context/context";
 import saveNewClient from "../../api/saveNewClient";
 import { IClient } from "../../api/types";
 import { MODAL_UPDATE_OR_ADD_TYPE } from "../modal-update-or-add/types";
+import Button from "../button";
+import SVG_TYPES from "../../enums/svg-types";
+import { BUTTON_TYPES } from "../../enums/button-types";
 
 const initialContactData: IClient = {
   id: "",
@@ -48,7 +50,14 @@ const Content = () => {
         <TableClients />
       </section>
 
-      <ButtonAdd openModal={() => setIsOpenAddModal(true)} />
+      <Button
+        onClick={() => setIsOpenAddModal(true)}
+        icon={SVG_TYPES.addClient}
+        className={stiles.button}
+        type={BUTTON_TYPES.secondary}
+      >
+        Добавить клиента
+      </Button>
 
       {isOpenAddModal && (
         <ModalUpdateOrAdd

@@ -3,7 +3,7 @@ import { IModalContacts } from "./types";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import { CONTACT_TYPES, IContact } from "../../api/types";
-import ComponentsSVG from "../components-svg";
+import ComponentsSVG from "../../assets/ui-kit/components-svg";
 import SVG_TYPES from "../../enums/svg-types";
 import SelectContact from "../select-contact";
 import stringToClear from "../../utils/stringToClear";

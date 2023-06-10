@@ -1,7 +1,7 @@
 import { FC, useContext, useEffect, useState } from "react";
 import { Context } from "../../context/context";
-import Table from "../table";
-import { IRow } from "../table/types";
+import Table from "../../assets/ui-kit/table";
+import { IRow } from "../../assets/ui-kit/table/types";
 import styles from "./styles.module.scss";
 import getRows from "./utils/getRows";
 import filterRowsByHeader from "./utils/filterRowsByHeader";

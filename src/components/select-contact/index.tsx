@@ -2,10 +2,10 @@ import { FC } from "react";
 import { ISelectContact } from "./types";
 import styles from "./styles.module.scss";
 import { CONTACT_TYPES } from "../../api/types";
-import Select from "../select";
-import ComponentsSVG from "../components-svg";
+import Select from "../../assets/ui-kit/select";
+import ComponentsSVG from "../../assets/ui-kit/components-svg";
 import SVG_TYPES from "../../enums/svg-types";
-import { ISelectTypeOption } from "../select/types";
+import { ISelectTypeOption } from "../../assets/ui-kit/select/types";
 import classNames from "classnames";
 
 const CONTACT_TYPE_NAMES = {

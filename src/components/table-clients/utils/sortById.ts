@@ -1,4 +1,4 @@
-import { IRow } from "../../table/types";
+import { IRow } from "../../../assets/ui-kit/table/types";
 import sortStringCallback from "../../../utils/sortStringCallback";
 
 const sortById = ({

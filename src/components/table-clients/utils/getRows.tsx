@@ -1,5 +1,5 @@
 import { IClient } from "../../../api/types";
-import { ICell, IRow } from "../../table/types";
+import { ICell, IRow } from "../../../assets/ui-kit/table/types";
 import { TABLE_COLUMNS_ENUM } from "../../../enums/row-keys";
 import styles from "../styles.module.scss";
 import CellId from "../components/cell-id";

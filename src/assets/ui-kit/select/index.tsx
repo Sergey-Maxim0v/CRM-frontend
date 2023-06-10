@@ -3,7 +3,7 @@ import { ISelect } from "./types";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 import ComponentsSVG from "../components-svg";
-import SVG_TYPES from "../../enums/svg-types";
+import SVG_TYPES from "../../../enums/svg-types";
 
 const Select: FC<ISelect> = ({ value, onChange, options, className }) => {
   const selectedOption = options.find(

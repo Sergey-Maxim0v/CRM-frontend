@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IModalDelete } from "./types";
-import Modal from "../modal";
+import Modal from "../../assets/ui-kit/modal";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../enums/button-types";
 import ButtonCancel from "../button-cancel";

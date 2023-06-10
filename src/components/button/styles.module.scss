@@ -17,9 +17,38 @@
       background-color: $c-violet-light;
     }
   }
+
+  &.primary {
+    background-color: $c-violet;
+    color: $c-white;
+
+    &:hover, &:focus {
+      background-color: $c-violet-light;
+    }
+  }
+
+  &.secondary{
+    width: 216px;
+    border: 1px solid $c-violet;
+    background-color: transparent;
+    color: $c-violet;
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+
+    &:hover {
+      border-color: transparent;
+      background-color: $c-violet-light;
+      color: $c-white;
+    }
+
+    &:active {
+      border-color: transparent;
+      background-color: $c-violet-dark;
+      color: $c-white;
+    }
+  }
 }
 
-.loader {
+.icon {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -29,4 +58,3 @@
   min-width: 16px;
   color: $c-white;
 }
-

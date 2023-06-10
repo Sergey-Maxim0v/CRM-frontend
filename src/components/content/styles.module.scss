@@ -5,8 +5,12 @@
   background-color: $c-gray-bg-page;
 }
 
-.tableRow{
+.tableRow {
   margin-bottom: 40px;
   max-width: 100%;
   overflow-x: auto;
+}
+
+.button {
+  margin: 0 auto;
 }

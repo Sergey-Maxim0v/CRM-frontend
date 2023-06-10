@@ -1,4 +1,4 @@
-import { IRow } from "../../table/types";
+import { IRow } from "../../../assets/ui-kit/table/types";
 import { ISort, SORT_ENUM } from "../types";
 import sortById from "./sortById";
 import sortByName from "./sortByName";
