@@ -14,7 +14,6 @@ const Button: FC<PropsWithChildren<IButton>> = ({
   loader,
   icon,
 }) => {
-  console.log(type);
   return (
     <button
       onClick={(event) => onClick?.(event)}

@@ -18,9 +18,6 @@ const TableClients: FC = () => {
   } = useContext(Context);
 
   const [rows, setRows] = useState<IRow[]>([]);
-  const [filteredSortedRows, setFilteredSortedRows] = useState<IRow[]>();
-  const [errorMessage, setErrorMessage] = useState("");
-  const [noListMessage, setNoListMessage] = useState("");
   const [sortedBy, setSortedBy] = useState<ISort>({
     type: SORT_ENUM.id,
     direction: true,
@@ -28,50 +25,40 @@ const TableClients: FC = () => {
 
   const { columns } = useGetColumns({ sortedBy, setSortedBy });
 
-  useEffect(() => {
-    setRows(getRows({ data }));
-  }, [data]);
-
-  useEffect(() => {
+  const getFilteredSortedRows = (): IRow[] | undefined => {
     if (!rows.length) {
-      setFilteredSortedRows(undefined);
-      return;
+      return undefined;
     }
 
     const sortedRows = getSortedRows({ rows, sortedBy });
 
-    const filteredRows = sortedRows.filter((row) =>
-      filterRowsByHeader({ row, filter })
-    );
+    return sortedRows.filter((row) => filterRowsByHeader({ row, filter }));
+  };
 
-    setFilteredSortedRows(filteredRows);
-  }, [filter, rows, sortedBy]);
+  const filteredSortedRows = getFilteredSortedRows();
 
   useEffect(() => {
+    setRows(getRows({ data }));
+  }, [data]);
+
+  const getNoListMessage = () => {
     if (filter && !filteredSortedRows?.length) {
-      setNoListMessage(
-        "По Вашему запросу ничего не найдено. Попробуйте изменить критерии поиска."
-      );
-      return;
+      return "По Вашему запросу ничего не найдено. Попробуйте изменить критерии поиска.";
     }
 
     if (!filteredSortedRows?.length) {
-      setNoListMessage("Список клиентов пуст.");
-      return;
+      return "Список клиентов пуст.";
     }
 
-    setNoListMessage("");
+    return "";
+  };
 
-    // eslint-disable-next-line
-  }, [filteredSortedRows]);
-
-  useEffect(() => {
+  const getErrorMessage = () => {
     if (isError) {
-      setErrorMessage("Ошибка загрузки списка клиентов");
-    } else {
-      setErrorMessage("");
+      return "Ошибка загрузки списка клиентов";
     }
-  }, [isError]);
+    return "";
+  };
 
   return (
     <Table
@@ -82,8 +69,8 @@ const TableClients: FC = () => {
       tableStyle={styles.table}
       tableBodyStyle={styles.body}
       isLoading={isLoadingClients}
-      errorMessage={errorMessage}
-      noListMessage={noListMessage}
+      errorMessage={getErrorMessage()}
+      noListMessage={getNoListMessage()}
     />
   );
 };
