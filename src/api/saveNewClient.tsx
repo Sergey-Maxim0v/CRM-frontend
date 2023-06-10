@@ -9,8 +9,18 @@ const saveNewClient = async (client: IClient) => {
     surname: client.surname,
     contacts: client.contacts,
   };
+  const controller = new AbortController();
 
-  return await axios.post<IClient>(CONTACTS_SAVE_NEW_URL, dataForSend);
+  const cancel = () => controller.abort();
+
+  const res = await axios.post<IClient>(CONTACTS_SAVE_NEW_URL, dataForSend, {
+    signal: controller.signal,
+  });
+
+  return {
+    savedClient: res.data,
+    cancel,
+  };
 };
 
 export default saveNewClient;

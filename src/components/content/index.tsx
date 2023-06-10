@@ -41,7 +41,9 @@ const Content = () => {
     saveNewClient(clientData)
       .then((res) => {
         setClientData(initialContactData);
-        res?.data && setClientsData((prev) => prev.concat(res.data));
+        if (res?.savedClient) {
+          setClientsData((prev) => prev.concat(res.savedClient));
+        }
       })
       .catch((e) => console.warn("error save new client:::", e))
       .finally(() => {

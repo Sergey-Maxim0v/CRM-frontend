@@ -51,9 +51,11 @@ const CellActivities: FC<ICellActivities> = ({ client }) => {
 
     await updateClient(updatedClient)
       .then((res) => {
-        res?.data &&
+        if (res?.updatedClient) {
           setClientsData((prev) => {
-            const currentElement = prev.find((el) => el.id === res.data.id);
+            const currentElement = prev.find(
+              (el) => el.id === res.updatedClient.id
+            );
             const currentIndex = currentElement && prev.indexOf(currentElement);
             const result: IClient[] = [];
 
@@ -61,12 +63,13 @@ const CellActivities: FC<ICellActivities> = ({ client }) => {
               if (i !== currentIndex) {
                 result.push(prev[i]);
               } else {
-                result.push(res.data);
+                result.push(res.updatedClient);
               }
             }
 
             return result;
           });
+        }
       })
       .catch((error) => {
         console.error("error update client:::", error);
